@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jugos - Golosinas Deli</title>
+  <meta name="description" content="Productos de Jugos - Golosinas Deli. Pedí por WhatsApp.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<a class="whatsapp-float" href="https://wa.me/5492392558607?text=Hola!%20Quiero%20hacer%20un%20pedido" target="_blank">
+  📞 <!-- Emoji de teléfono -->
+</a>
+  
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="index.html">
+        <img src="images/logo.jpeg" alt="Logo Golosinas Deli" class="brand__logo">
+        <div class="brand__text">
+          <strong>Golosinas Dymitri</strong>
+          <span>Variedad en productos de golosinas</span>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="salado.html" target="_blank" class="nav__link">Salado</a>
+        <a href="dulce.html" target="_blank" class="nav__link">Dulce</a>
+        <a href="condimentos.html" target="_blank" class="nav__link">Condimentos</a>
+        <a href="jugos.html" target="_blank" class="nav__link">Jugos</a>
+        <a href="masitas.html" target="_blank" class="nav__link">Masitas</a>
+        <a href="index.html#contacto" class="nav__link nav__link--btn">Contacto</a>
+        <button class="cart-btn" id="openCartBtn">
+          🛒 <span class="cart-badge" id="cartCount">0</span>
+        </button>
+      </nav>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+    </div>
+    <!-- MENU MOVIL -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="salado.html" target="_blank">Salado</a>
+      <a href="dulce.html" target="_blank">Dulce</a>
+      <a href="condimentos.html" target="_blank">Condimentos</a>
+      <a href="jugos.html" target="_blank">Jugos</a>
+      <a href="masitas.html" target="_blank">Masitas</a>
+      <a href="index.html#contacto">Contacto</a>
+      <button id="openCartBtnMobile">🛒 Carrito (<span id="cartCountMobile">0</span>)</button>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Productos de Jugos</h1>
+      <p>Seleccioná tus jugos naturales y agregalos al carrito.</p>
+    </div>
+  </section>
+
+  <!-- SECCION JUGOS -->
+  <section class="section">
+    <div class="container">
+      <div class="section__head">
+        <h2>Jugos</h2>
+        <p>Seleccioná tus jugos naturales y agregalos al carrito.</p>
+      </div>
+      
+      <!-- SUBSECCION CAJAS NOEL -->
+      <div class="subsection">
+        <h3>Cajas Noel</h3>
+        <div class="products">
+          <div class="product-card">
+            <img src="images/cajas-jugos noel.jpg" alt="Cajas Noel (Frutilla, Ananá, Multifruita, Naranja, Limonada)" class="product-img">
+            <div class="product-body">
+              <div class="product-title">Cajas Noel (Frutilla, Ananá, Multifruita, Naranja, Limonada)</div>
+              <div class="product-meta">
+                <span class="price">$350</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('Cajas Noel (Frutilla, Ananá, Multifruita, Naranja, Limonada)', this.previousElementSibling.querySelector('span').textContent, 350)">Agregar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- SUBSECCION OTROS -->
+      <div class="subsection">
+        <h3>Otros</h3>
+        <div class="products">
+          <div class="product-card">
+            <img src="images/jugo-pepito.jpg" alt="Jugo Pepito para Congelar" class="product-img">
+            <div class="product-body">
+              <div class="product-title">Jugo Pepito para Congelar</div>
+              <div class="product-meta">
+                <span class="price">$80</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('Jugo Pepito para Congelar', this.previousElementSibling.querySelector('span').textContent, 80)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/jugo-tutti.jpg" alt="Jugo Tutti" class="product-img">
+            <div class="product-body">
+              <div class="product-title">Jugo Tutti</div>
+              <div class="product-meta">
+                <span class="price">$65</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('Jugo Tutti', this.previousElementSibling.querySelector('span').textContent, 65)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/jugo-chocolatada.jpg" alt="Chocolatada" class="product-img">
+            <div class="product-body">
+              <div class="product-title">Chocolatada</div>
+              <div class="product-meta">
+                <span class="price">$60</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('Chocolatada', this.previousElementSibling.querySelector('span').textContent, 60)">Agregar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER CONTACTO -->
+  <footer class="footer" id="contacto">
+    <div class="container footer__grid">
+      <div>
+        <h3>Contacto</h3>
+        <p class="muted">Escribinos por WhatsApp o visitanos en el local.</p>
+        <div class="social">
+          <a class="social__btn" href="#" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+          <a class="social__btn" href="#" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+          <a class="social__btn" href="https://wa.me/5492392558607?text=Hola!%20Quiero%20hacer%20un%20pedido" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+      </div>
+      <div>
+        <h3>Ubicación</h3>
+        <div class="map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3197.1747649238573!2d-62.96238072543368!3d-36.74237597356822!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95c207711ebaa873%3A0x2b646c84f3b9ec2!2sAv.%20Am%C3%A9rica%20860%2C%20B6339%20Salliquel%C3%B3%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1770776971496!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <span>© <span id="year"></span> Golosinas Dymitri</span>
+      <span class="muted">Sitio creado por Nexo Web - Salliquelo</span>
+    </div>
+  </footer>
+
+  <!-- BOTON WHATSAPP -->
+  <a class="whatsapp-float" href="https://wa.me/5492392558607?text=Hola!%20Quiero%20hacer%20un%20pedido" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- DRAWER CARRITO -->
+  <div class="drawer" id="cartDrawer">
+    <div class="drawer__overlay" id="cartOverlay"></div>
+    <div class="drawer__panel">
+      <div class="drawer__head">
+        <h3>Tu carrito</h3>
+        <button class="icon-btn" id="closeCartBtn">✕</button>
+      </div>
+      <div class="drawer__content" id="cartItems"></div>
+      <div class="drawer__footer">
+        <div class="total-row">
+          <span>Total</span>
+          <strong id="cartTotal">$0</strong>
+        </div>
+        <button class="btn btn--primary w100" id="checkoutBtn">Enviar pedido por WhatsApp</button>
+        <button class="btn btn--ghost w100" id="clearCartBtn">Vaciar carrito</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="cart.js"></script>
+</body>
+</html>
+
+

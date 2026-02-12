@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Condimentos - Golosinas Dymitri</title>
+  <meta name="description" content="Productos de Condimentos - Golosinas Deli. Pedí por WhatsApp.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<a class="whatsapp-float" href="https://wa.me/5492392558607?text=Hola!%20Quiero%20hacer%20un%20pedido" target="_blank">
+  📞 <!-- Emoji de teléfono -->
+</a>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="index.html">
+        <img src="images/logo.jpeg" alt="Logo Golosinas Deli" class="brand__logo">
+        <div class="brand__text">
+          <strong>Golosinas Dymitri</strong>
+          <span>Variedad en productos de golosinas</span>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="salado.html" target="_blank" class="nav__link">Salado</a>
+        <a href="dulce.html" target="_blank" class="nav__link">Dulce</a>
+        <a href="condimentos.html" target="_blank" class="nav__link">Condimentos</a>
+        <a href="jugos.html" target="_blank" class="nav__link">Jugos</a>
+        <a href="masitas.html" target="_blank" class="nav__link">Masitas</a>
+        <a href="index.html#contacto" class="nav__link nav__link--btn">Contacto</a>
+        <button class="cart-btn" id="openCartBtn">
+          🛒 <span class="cart-badge" id="cartCount">0</span>
+        </button>
+      </nav>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+    </div>
+    <!-- MENU MOVIL -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="salado.html" target="_blank">Salado</a>
+      <a href="dulce.html" target="_blank">Dulce</a>
+      <a href="condimentos.html" target="_blank">Condimentos</a>
+      <a href="jugos.html" target="_blank">Jugos</a>
+      <a href="masitas.html" target="_blank">Masitas</a>
+      <a href="index.html#contacto">Contacto</a>
+      <button id="openCartBtnMobile">🛒 Carrito (<span id="cartCountMobile">0</span>)</button>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Productos de Condimentos</h1>
+      <p>Seleccioná tus salsas y especias favoritas por kilo o pote y agregalos al carrito.</p>
+    </div>
+  </section>
+
+  <!-- SECCION CONDIMENTOS -->
+  <section class="section">
+    <div class="container">
+      <div class="section__head">
+       
+      </div>
+      
+      <!-- SUBSECCION POR KILO -->
+      <div class="subsection">
+        <h3>Por Kilo</h3>
+        <div class="products">
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="AJI MOLIDO" class="product-img">
+            <div class="product-body">
+              <div class="product-title">AJI MOLIDO</div>
+              <div class="product-meta">
+                <span class="price">$5800</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('AJI MOLIDO (Kilo)', this.previousElementSibling.querySelector('span').textContent, 5800)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="AJO GRANULADO" class="product-img">
+            <div class="product-body">
+              <div class="product-title">AJO GRANULADO</div>
+              <div class="product-meta">
+                <span class="price">$11500</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('AJO GRANULADO (Kilo)', this.previousElementSibling.querySelector('span').textContent, 11500)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="CHIMICHURRI" class="product-img">
+            <div class="product-body">
+              <div class="product-title">CHIMICHURRI</div>
+              <div class="product-meta">
+                <span class="price">$6500</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('CHIMICHURRI (Kilo)', this.previousElementSibling.querySelector('span').textContent, 6500)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="COMINO" class="product-img">
+            <div class="product-body">
+              <div class="product-title">COMINO</div>
+              <div class="product-meta">
+                <span class="price">$6000</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('COMINO (Kilo)', this.previousElementSibling.querySelector('span').textContent, 6000)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="COND PARA ARROZ" class="product-img">
+            <div class="product-body">
+              <div class="product-title">COND PARA ARROZ</div>
+              <div class="product-meta">
+                <span class="price">$6200</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('COND PARA ARROZ (Kilo)', this.previousElementSibling.querySelector('span').textContent, 6200)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="COND PARA CARNE" class="product-img">
+            <div class="product-body">
+              <div class="product-title">COND PARA CARNE</div>
+              <div class="product-meta">
+                <span class="price">$6200</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('COND PARA CARNE (Kilo)', this.previousElementSibling.querySelector('span').textContent, 6200)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="COND PARA EMPANA" class="product-img">
+            <div class="product-body">
+              <div class="product-title">COND PARA EMPANA</div>
+              <div class="product-meta">
+                <span class="price">$6500</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('COND PARA EMPANA (Kilo)', this.previousElementSibling.querySelector('span').textContent, 6500)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="COND PARA RAVIOLES" class="product-img">
+            <div class="product-body">
+              <div class="product-title">COND PARA RAVIOLES</div>
+              <div class="product-meta">
+                <span class="price">$6500</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('COND PARA RAVIOLES (Kilo)', this.previousElementSibling.querySelector('span').textContent, 6500)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="CONDI PARA PIZZA" class="product-img">
+            <div class="product-body">
+              <div class="product-title">CONDI PARA PIZZA</div>
+              <div class="product-meta">
+                <span class="price">$5200</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('CONDI PARA PIZZA (Kilo)', this.previousElementSibling.querySelector('span').textContent, 5200)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="CURCUMA" class="product-img">
+            <div class="product-body">
+              <div class="product-title">CURCUMA</div>
+              <div class="product-meta">
+                <span class="price">$5600</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('CURCUMA (Kilo)', this.previousElementSibling.querySelector('span').textContent, 5600)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="CEBOLLA EN ESCAMA" class="product-img">
+            <div class="product-body">
+              <div class="product-title">CEBOLLA EN ESCAMA</div>
+              <div class="product-meta">
+                <span class="price">$13400</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('CEBOLLA EN ESCAMA (Kilo)', this.previousElementSibling.querySelector('span').textContent, 13400)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="CEBOLLA DE VERDEO" class="product-img">
+            <div class="product-body">
+              <div class="product-title">CEBOLLA DE VERDEO</div>
+              <div class="product-meta">
+                <span class="price">$16500</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('CEBOLLA DE VERDEO (Kilo)', this.previousElementSibling.querySelector('span').textContent, 16500)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="CANELA MOLLIDA" class="product-img">
+            <div class="product-body">
+              <div class="product-title">CANELA MOLLIDA</div>
+              <div class="product-meta">
+                <span class="price">$14000</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('CANELA MOLLIDA (Kilo)', this.previousElementSibling.querySelector('span').textContent, 14000)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="CORIANDRO" class="product-img">
+            <div class="product-body">
+              <div class="product-title">CORIANDRO</div>
+              <div class="product-meta">
+                <span class="price">$4500</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('CORIANDRO (Kilo)', this.previousElementSibling.querySelector('span').textContent, 4500)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="ESPECIAS SURTIDAS" class="product-img">
+            <div class="product-body">
+              <div class="product-title">ESPECIAS SURTIDAS</div>
+              <div class="product-meta">
+                <span class="price">$7100</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('ESPECIAS SURTIDAS (Kilo)', this.previousElementSibling.querySelector('span').textContent, 7100)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="JENGIBRE" class="product-img">
+            <div class="product-body">
+              <div class="product-title">JENGIBRE</div>
+              <div class="product-meta">
+                <span class="price">$19800</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('JENGIBRE (Kilo)', this.previousElementSibling.querySelector('span').textContent, 19800)">Agregar
+            </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="MIX SEMILLA" class="product-img">
+            <div class="product-body">
+              <div class="product-title">MIX SEMILLA</div>
+              <div class="product-meta">
+                <span class="price">$5600</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('MIX SEMILLA (Kilo)', this.previousElementSibling.querySelector('span').textContent, 5600)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="NUEZ MOSCADA" class="product-img">
+            <div class="product-body">
+              <div class="product-title">NUEZ MOSCADA</div>
+              <div class="product-meta">
+                <span class="price">$7600</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('NUEZ MOSCADA (Kilo)', this.previousElementSibling.querySelector('span').textContent, 7600)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="OREGANO" class="product-img">
+            <div class="product-body">
+              <div class="product-title">OREGANO</div>
+              <div class="product-meta">
+                <span class="price">$4000</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('OREGANO (Kilo)', this.previousElementSibling.querySelector('span').textContent, 4000)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="PIMENTÓN" class="product-img">
+            <div class="product-body">
+              <div class="product-title">PIMENTÓN</div>
+              <div class="product-meta">
+                <span class="price">$5700</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('PIMENTÓN (Kilo)', this.previousElementSibling.querySelector('span').textContent, 5700)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="PIMIENTA NEGRA M" class="product-img">
+            <div class="product-body">
+              <div class="product-title">PIMIENTA NEGRA M</div>
+              <div class="product-meta">
+                <span class="price">$5600</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('PIMIENTA NEGRA M (Kilo)', this.previousElementSibling.querySelector('span').textContent, 5600)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="PIMIENTA BLANCA M" class="product-img">
+            <div class="product-body">
+              <div class="product-title">PIMIENTA BLANCA M</div>
+              <div class="product-meta">
+                <span class="price">$9000</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('PIMIENTA BLANCA M (Kilo)', this.previousElementSibling.querySelector('span').textContent, 9000)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="PIMIENTA NEGRA G" class="product-img">
+            <div class="product-body">
+              <div class="product-title">PIMIENTA NEGRA G</div>
+              <div class="product-meta">
+                <span class="price">$31000</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('PIMIENTA NEGRA G (Kilo)', this.previousElementSibling.querySelector('span').textContent, 31000)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="PEREJIL" class="product-img">
+            <div class="product-body">
+              <div class="product-title">PEREJIL</div>
+              <div class="product-meta">
+                <span class="price">$5200</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('PEREJIL (Kilo)', this.previousElementSibling.querySelector('span').textContent, 5200)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="PESTO" class="product-img">
+            <div class="product-body">
+              <div class="product-title">PESTO</div>
+              <div class="product-meta">
+                <span class="price">$10800</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('PESTO (Kilo)', this.previousElementSibling.querySelector('span').textContent, 10800)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="POLVO PARA HORNEAR" class="product-img">
+            <div class="product-body">
+              <div class="product-title">POLVO PARA HORNEAR</div>
+              <div class="product-meta">
+                <span class="price">$8500</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('POLVO PARA HORNEAR (Kilo)', this.previousElementSibling.querySelector('span').textContent, 8500)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="PASAS DE UVA" class="product-img">
+            <div class="product-body">
+              <div class="product-title">PASAS DE UVA</div>
+              <div class="product-meta">
+                <span class="price">$7300</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('PASAS DE UVA (Kilo)', this.previousElementSibling.querySelector('span').textContent, 7300)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="ROMERO" class="product-img">
+            <div class="product-body">
+              <div class="product-title">ROMERO</div>
+              <div class="product-meta">
+                <span class="price">$13200</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('ROMERO (Kilo)', this.previousElementSibling.querySelector('span').textContent, 13200)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="SAL DE CEBOLLA" class="product-img">
+            <div class="product-body">
+              <div class="product-title">SAL DE CEBOLLA</div>
+              <div class="product-meta">
+                <span class="price">$7000</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('SAL DE CEBOLLA (Kilo)', this.previousElementSibling.querySelector('span').textContent, 7000)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="SAL DE AJO" class="product-img">
+            <div class="product-body">
+              <div class="product-title">SAL DE AJO</div>
+              <div class="product-meta">
+                <span class="price">$6000</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('SAL DE AJO (Kilo)', this.previousElementSibling.querySelector('span').textContent, 6000)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="TOMILLO" class="product-img">
+            <div class="product-body">
+              <div class="product-title">TOMILLO</div>
+              <div class="product-meta">
+                <span class="price">$14800</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('TOMILLO (Kilo)', this.previousElementSibling.querySelector('span').textContent, 14800)">Agregar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- SUBSECCION POR POTE -->
+      <div class="subsection">
+        <h3>Por Pote</h3>
+        <div class="products">
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="AJI MOLIDO" class="product-img">
+            <div class="product-body">
+              <div class="product-title">AJI MOLIDO</div>
+              <div class="product-meta">
+                <span class="price">$900</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('AJI MOLIDO (Pote)', this.previousElementSibling.querySelector('span').textContent, 900)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="AJO GRANULADO" class="product-img">
+            <div class="product-body">
+              <div class="product-title">AJO GRANULADO</div>
+              <div class="product-meta">
+                <span class="price">$1500</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('AJO GRANULADO (Pote)', this.previousElementSibling.querySelector('span').textContent, 1500)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="CHIMICHURRI" class="product-img">
+            <div class="product-body">
+              <div class="product-title">CHIMICHURRI</div>
+              <div class="product-meta">
+                <span class="price">$900</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('CHIMICHURRI (Pote)', this.previousElementSibling.querySelector('span').textContent, 900)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="COMINO" class="product-img">
+            <div class="product-body">
+              <div class="product-title">COMINO</div>
+              <div class="product-meta">
+                <span class="price">$800</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('COMINO (Pote)', this.previousElementSibling.querySelector('span').textContent, 800)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="COND PARA ARROZ" class="product-img">
+            <div class="product-body">
+              <div class="product-title">COND PARA ARROZ</div>
+              <div class="product-meta">
+                <span class="price">$850</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('COND PARA ARROZ (Pote)', this.previousElementSibling.querySelector('span').textContent, 850)">Agregar</button>
+              </div>
+            </div>
+                      </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="COND PARA CARNE" class="product-img">
+            <div class="product-body">
+              <div class="product-title">COND PARA CARNE</div>
+              <div class="product-meta">
+                <span class="price">$850</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('COND PARA CARNE (Pote)', this.previousElementSibling.querySelector('span').textContent, 850)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="COND PARA EMPANA" class="product-img">
+            <div class="product-body">
+              <div class="product-title">COND PARA EMPANA</div>
+              <div class="product-meta">
+                <span class="price">$900</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('COND PARA EMPANA (Pote)', this.previousElementSibling.querySelector('span').textContent, 900)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="COND PARA RAVIOLES" class="product-img">
+            <div class="product-body">
+              <div class="product-title">COND PARA RAVIOLES</div>
+              <div class="product-meta">
+                <span class="price">$900</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('COND PARA RAVIOLES (Pote)', this.previousElementSibling.querySelector('span').textContent, 900)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="CONDI PARA PIZZA" class="product-img">
+            <div class="product-body">
+              <div class="product-title">CONDI PARA PIZZA</div>
+              <div class="product-meta">
+                <span class="price">$800</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('CONDI PARA PIZZA (Pote)', this.previousElementSibling.querySelector('span').textContent, 800)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="CURCUMA" class="product-img">
+            <div class="product-body">
+              <div class="product-title">CURCUMA</div>
+              <div class="product-meta">
+                <span class="price">$800</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('CURCUMA (Pote)', this.previousElementSibling.querySelector('span').textContent, 800)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="CEBOLLA EN ESCAMA" class="product-img">
+            <div class="product-body">
+              <div class="product-title">CEBOLLA EN ESCAMA</div>
+              <div class="product-meta">
+                <span class="price">$900</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('CEBOLLA EN ESCAMA (Pote)', this.previousElementSibling.querySelector('span').textContent, 900)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="CEBOLLA DE VERDEO" class="product-img">
+            <div class="product-body">
+              <div class="product-title">CEBOLLA DE VERDEO</div>
+              <div class="product-meta">
+                <span class="price">$900</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('CEBOLLA DE VERDEO (Pote)', this.previousElementSibling.querySelector('span').textContent, 900)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="CANELA MOLLIDA" class="product-img">
+            <div class="product-body">
+              <div class="product-title">CANELA MOLLIDA</div>
+              <div class="product-meta">
+                <span class="price">$1000</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('CANELA MOLLIDA (Pote)', this.previousElementSibling.querySelector('span').textContent, 1000)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="CORIANDRO" class="product-img">
+            <div class="product-body">
+              <div class="product-title">CORIANDRO</div>
+              <div class="product-meta">
+                <span class="price">$700</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('CORIANDRO (Pote)', this.previousElementSibling.querySelector('span').textContent, 700)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="CROCANTE" class="product-img">
+            <div class="product-body">
+              <div class="product-title">CROCANTE</div>
+              <div class="product-meta">
+                <span class="price">$900</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('CROCANTE (Pote)', this.previousElementSibling.querySelector('span').textContent, 900)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="COCO RALLADO" class="product-img">
+            <div class="product-body">
+              <div class="product-title">COCO RALLADO</div>
+              <div class="product-meta">
+                <span class="price">$700</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('COCO RALLADO (Pote)', this.previousElementSibling.querySelector('span').textContent, 700)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="ESPECIAS SURTIDAS" class="product-img">
+            <div class="product-body">
+              <div class="product-title">ESPECIAS SURTIDAS</div>
+              <div class="product-meta">
+                <span class="price">$1000</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('ESPECIAS SURTIDAS (Pote)', this.previousElementSibling.querySelector('span').textContent, 1000)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="GOTITAS CHOCOLATE N" class="product-img">
+            <div class="product-body">
+              <div class="product-title">GOTITAS CHOCOLATE N</div>
+              <div class="product-meta">
+                <span class="price">$1900</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('GOTITAS CHOCOLATE N (Pote)', this.previousElementSibling.querySelector('span').textContent, 1900)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="GOTITAS CHOCOLATE B" class="product-img">
+            <div class="product-body">
+              <div class="product-title">GOTITAS CHOCOLATE B</div>
+              <div class="product-meta">
+                <span class="price">$1900</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('GOTITAS CHOCOLATE B (Pote)', this.previousElementSibling.querySelector('span').textContent, 1900)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="JENGIBRE" class="product-img">
+            <div class="product-body">
+              <div class="product-title">JENGIBRE</div>
+              <div class="product-meta">
+                <span class="price">$2200</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('JENGIBRE (Pote)', this.previousElementSibling.querySelector('span').textContent, 2200)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="MIX SEMILLA" class="product-img">
+            <div class="product-body">
+              <div class="product-title">MIX SEMILLA</div>
+              <div class="product-meta">
+                <span class="price">$1000</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('MIX SEMILLA (Pote)', this.previousElementSibling.querySelector('span').textContent, 1000)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="NUEZ MOSCADA" class="product-img">
+            <div class="product-body">
+              <div class="product-title">NUEZ MOSCADA</div>
+              <div class="product-meta">
+                <span class="price">$1000</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('NUEZ MOSCADA (Pote)', this.previousElementSibling.querySelector('span').textContent, 1000)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="OREGANO" class="product-img">
+            <div class="product-body">
+              <div class="product-title">OREGANO</div>
+              <div class="product-meta">
+                <span class="price">$700</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('OREGANO (Pote)', this.previousElementSibling.querySelector('span').textContent, 700)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="PIMENTON" class="product-img">
+            <div class="product-body">
+              <div class="product-title">PIMENTON</div>
+              <div class="product-meta">
+                <span class="price">$900</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('PIMENTON (Pote)', this.previousElementSibling.querySelector('span').textContent, 900)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="PIMIENTA NEGRA M" class="product-img">
+            <div class="product-body">
+              <div class="product-title">PIMIENTA NEGRA M</div>
+              <div class="product-meta">
+                <span class="price">$1200</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('PIMIENTA NEGRA M (Pote)', this.previousElementSibling.querySelector('span').textContent, 1200)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="PIMIENTA NEGRA G" class="product-img">
+                        <div class="product-body">
+              <div class="product-title">PIMIENTA NEGRA G</div>
+              <div class="product-meta">
+                <span class="price">$31000</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('PIMIENTA NEGRA G (Pote)', this.previousElementSibling.querySelector('span').textContent, 31000)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="PIMIENTA BLANCA M" class="product-img">
+            <div class="product-body">
+              <div class="product-title">PIMIENTA BLANCA M</div>
+              <div class="product-meta">
+                <span class="price">$3500</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('PIMIENTA BLANCA M (Pote)', this.previousElementSibling.querySelector('span').textContent, 3500)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="PROVENZAL" class="product-img">
+            <div class="product-body">
+              <div class="product-title">PROVENZAL</div>
+              <div class="product-meta">
+                <span class="price">$800</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('PROVENZAL (Pote)', this.previousElementSibling.querySelector('span').textContent, 800)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="PEREJIL" class="product-img">
+            <div class="product-body">
+              <div class="product-title">PEREJIL</div>
+              <div class="product-meta">
+                <span class="price">$1500</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('PEREJIL (Pote)', this.previousElementSibling.querySelector('span').textContent, 1500)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="PESTO" class="product-img">
+            <div class="product-body">
+              <div class="product-title">PESTO</div>
+              <div class="product-meta">
+                <span class="price">$1500</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('PESTO (Pote)', this.previousElementSibling.querySelector('span').textContent, 1500)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="POLVO PARA HORNEAR" class="product-img">
+            <div class="product-body">
+              <div class="product-title">POLVO PARA HORNEAR</div>
+              <div class="product-meta">
+                <span class="price">$1200</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('POLVO PARA HORNEAR (Pote)', this.previousElementSibling.querySelector('span').textContent, 1200)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="PASAS DE UVA" class="product-img">
+            <div class="product-body">
+              <div class="product-title">PASAS DE UVA</div>
+              <div class="product-meta">
+                <span class="price">$1000</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('PASAS DE UVA (Pote)', this.previousElementSibling.querySelector('span').textContent, 1000)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="ROMERO" class="product-img">
+            <div class="product-body">
+              <div class="product-title">ROMERO</div>
+              <div class="product-meta">
+                <span class="price">$1000</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('ROMERO (Pote)', this.previousElementSibling.querySelector('span').textContent, 1000)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="SAL DE CEBOLLA" class="product-img">
+            <div class="product-body">
+              <div class="product-title">SAL DE CEBOLLA</div>
+              <div class="product-meta">
+                <span class="price">$900</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('SAL DE CEBOLLA (Pote)', this.previousElementSibling.querySelector('span').textContent, 900)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="SAL DE AJO" class="product-img">
+            <div class="product-body">
+              <div class="product-title">SAL DE AJO</div>
+              <div class="product-meta">
+                <span class="price">$900</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('SAL DE AJO (Pote)', this.previousElementSibling.querySelector('span').textContent, 900)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="images/placeholder.jpg" alt="TOMILLO" class="product-img">
+            <div class="product-body">
+              <div class="product-title">TOMILLO</div>
+              <div class="product-meta">
+                <span class="price">$1000</span>
+                <span class="stock disponible">Disponible</span>
+              </div>
+              <div class="product-actions">
+                <div class="qty">
+                  <button onclick="changeQty(this, -1)">-</button>
+                  <span>0</span>
+                  <button onclick="changeQty(this, 1)">+</button>
+                </div>
+                <button class="add-btn" onclick="addToCart('TOMILLO (Pote)', this.previousElementSibling.querySelector('span').textContent, 1000)">Agregar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER CONTACTO -->
+  <footer class="footer" id="contacto">
+    <div class="container footer__grid">
+      <div>
+        <h3>Contacto</h3>
+        <p class="muted">Escribinos por WhatsApp o visitanos en el local.</p>
+        <div class="social">
+          <a class="social__btn" href="#" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+          <a class="social__btn" href="#" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+          <a class="social__btn" href="https://wa.me/5492392558607?text=Hola!%20Quiero%20hacer%20un%20pedido" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+      </div>
+      <div>
+        <h3>Ubicación</h3>
+        <div class="map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3197.1747649238573!2d-62.96238072543368!3d-36.74237597356822!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95c207711ebaa873%3A0x2b646c84f3b9ec2!2sAv.%20Am%C3%A9rica%20860%2C%20B6339%20Salliquel%C3%B3%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1770776971496!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <span>© <span id="year"></span> Golosinas Dymitri</span>
+      <span class="muted">Sitio creado por Nexo Web - Salliquelo</span>
+    </div>
+  </footer>
+
+  <!-- BOTON WHATSAPP -->
+  <a class="whatsapp-float" href="https://wa.me/5492392558607?text=Hola!%20Quiero%20hacer%20un%20pedido" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- DRAWER CARRITO -->
+  <div class="drawer" id="cartDrawer">
+    <div class="drawer__overlay" id="cartOverlay"></div>
+    <div class="drawer__panel">
+      <div class="drawer__head">
+        <h3>Tu carrito</h3>
+        <button class="icon-btn" id="closeCartBtn">✕</button>
+      </div>
+      <div class="drawer__content" id="cartItems"></div>
+      <div class="drawer__footer">
+        <div class="total-row">
+          <span>Total</span>
+          <strong id="cartTotal">$0</strong>
+        </div>
+        <button class="btn btn--primary w100" id="checkoutBtn">Enviar pedido por WhatsApp</button>
+        <button class="btn btn--ghost w100" id="clearCartBtn">Vaciar carrito</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="cart.js"></script>
+</body>
+</html>
+            
