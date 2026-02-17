@@ -9,10 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer">
-<a class="whatsapp-float" href="https://wa.me/5492392558607?text=Hola!%20Quiero%20hacer%20un%20pedido" target="_blank">
-  📞 <!-- Emoji de teléfono -->
-</a>
+  <link rel="stylesheet" href="styles-extra.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
   <!-- HEADER -->
@@ -58,15 +56,25 @@
     </div>
   </section>
 
+  <!-- NAVEGACION DE SUBSECCIONES -->
+  <section class="section-nav">
+    <div class="container">
+      <div class="section-tabs">
+        <button class="section-tab active" onclick="scrollToTab(this,'kilo-c')">⚖️ Por Kilo</button>
+        <button class="section-tab" onclick="scrollToTab(this,'pote-c')">🫙 Por Pote</button>
+      </div>
+    </div>
+  </section>
+
   <!-- SECCION CONDIMENTOS -->
   <section class="section">
     <div class="container">
+      
       <div class="section__head">
-       
       </div>
       
       <!-- SUBSECCION POR KILO -->
-      <div class="subsection">
+      <div class="subsection" id="kilo-c">
         <h3>Por Kilo</h3>
         <div class="products">
           <div class="product-card">
@@ -353,8 +361,8 @@
                   <span>0</span>
                   <button onclick="changeQty(this, 1)">+</button>
                 </div>
-                <button class="add-btn" onclick="addToCart('JENGIBRE (Kilo)', this.previousElementSibling.querySelector('span').textContent, 19800)">Agregar
-            </div>
+                <button class="add-btn" onclick="addToCart('JENGIBRE (Kilo)', this.previousElementSibling.querySelector('span').textContent, 19800)">Agregar</button>
+              </div>
             </div>
           </div>
           <div class="product-card">
@@ -631,7 +639,7 @@
       </div>
       
       <!-- SUBSECCION POR POTE -->
-      <div class="subsection">
+      <div class="subsection" id="pote-c">
         <h3>Por Pote</h3>
         <div class="products">
           <div class="product-card">
@@ -723,7 +731,7 @@
                 <button class="add-btn" onclick="addToCart('COND PARA ARROZ (Pote)', this.previousElementSibling.querySelector('span').textContent, 850)">Agregar</button>
               </div>
             </div>
-                      </div>
+          </div>
           <div class="product-card">
             <img src="images/placeholder.jpg" alt="COND PARA CARNE" class="product-img">
             <div class="product-body">
@@ -1086,7 +1094,7 @@
           </div>
           <div class="product-card">
             <img src="images/placeholder.jpg" alt="PIMIENTA NEGRA G" class="product-img">
-                        <div class="product-body">
+            <div class="product-body">
               <div class="product-title">PIMIENTA NEGRA G</div>
               <div class="product-meta">
                 <span class="price">$31000</span>
@@ -1294,9 +1302,9 @@
         <h3>Contacto</h3>
         <p class="muted">Escribinos por WhatsApp o visitanos en el local.</p>
         <div class="social">
-          <a class="social__btn" href="#" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
-          <a class="social__btn" href="#" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-          <a class="social__btn" href="https://wa.me/5492392558607?text=Hola!%20Quiero%20hacer%20un%20pedido" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          <a class="social__btn" href="https://www.facebook.com/GolosinasDymitri" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+          <a class="social__btn" href="https://www.instagram.com/golosinas_dymitri/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+          <a class="social__btn" href="https://wa.me/5492392558607?text=Hola!%20Quiero%20hacer%20un%20pedido%20mi%20nombre%20es%20" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         </div>
       </div>
       <div>
@@ -1313,7 +1321,7 @@
   </footer>
 
   <!-- BOTON WHATSAPP -->
-  <a class="whatsapp-float" href="https://wa.me/5492392558607?text=Hola!%20Quiero%20hacer%20un%20pedido" target="_blank">
+  <a class="whatsapp-float" href="https://wa.me/5492392558607?text=Hola!%20Quiero%20hacer%20un%20pedido%20mi%20nombre%20es%20" target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a>
 
@@ -1339,6 +1347,14 @@
 
   <script src="script.js"></script>
   <script src="cart.js"></script>
+  <script>
+    function scrollToTab(btn, id) {
+      document.querySelectorAll('.section-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  </script>
 </body>
 </html>
             
