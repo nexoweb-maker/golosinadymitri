@@ -51,13 +51,25 @@
     </div>
   </section>
 
+  <!-- FILTRO TABS -->
+  <section class="section-nav">
+    <div class="container">
+      <div class="section-tabs">
+        <button class="section-tab active" onclick="scrollToTab(this,'unitarios-j')">🥤 Unitarios</button>
+        <button class="section-tab combo-tab" onclick="scrollToTab(this,'caja-j')">🎁 Cajas</button>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container">
 
-      <!-- CAJAS NOEL -->
-      <div class="subsection">
-        <h3>Cajas Noel</h3>
+      <!-- UNITARIOS -->
+      <div class="subsection" id="unitarios-j">
+        <h3>Jugos Unitarios</h3>
         <div class="products">
+
+          <!-- CAJAS NOEL -->
           <div class="product-card">
             <img src="images/cajas-jugos noel.jpg" alt="Cajas Noel (Frutilla, Ananá, Multifruita, Naranja, Limonada)" class="product-img">
             <div class="product-body">
@@ -69,24 +81,7 @@
               </div>
             </div>
           </div>
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="Caja Jugo Noel x18" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Caja Jugo Noel x18</div>
-              <div class="product-meta"><span class="price">$5400</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Caja Jugo Noel x18',this.previousElementSibling.querySelector('span').textContent,5400)">Agregar</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- OTROS -->
-      <div class="subsection">
-        <h3>Otros</h3>
-        <div class="products">
           <div class="product-card">
             <img src="images/jugo-pepito.jpg" alt="Jugo Pepito para Congelar" class="product-img">
             <div class="product-body">
@@ -120,6 +115,31 @@
               </div>
             </div>
           </div>
+
+        </div>
+      </div>
+
+      <!-- COMBOS -->
+      <div class="subsection" id="caja-j">
+        <div class="subsection-combo-header">
+          <h3>🎁 Cajas</h3>
+          <span class="combo-badge">¡Mejor precio!</span>
+        </div>
+        <div class="products">
+
+          <div class="product-card product-card--combo">
+            <div class="combo-ribbon">COMBO</div>
+            <img src="images/placeholder.jpg" alt="Caja Jugo Noel x18" class="product-img">
+            <div class="product-body">
+              <div class="product-title">Caja Jugo Noel x18</div>
+              <div class="product-meta"><span class="price">$5400</span><span class="stock disponible">Disponible</span></div>
+              <div class="product-actions">
+                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
+                <button class="add-btn" onclick="addToCart('Caja Jugo Noel x18',this.previousElementSibling.querySelector('span').textContent,5400)">Agregar</button>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -172,7 +192,14 @@
 
   <script src="script.js"></script>
   <script src="cart.js"></script>
+  <script>
+    function scrollToTab(btn, id) {
+      document.querySelectorAll('.section-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  </script>
 </body>
 </html>
-
 
