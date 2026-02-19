@@ -10,7 +10,49 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="styles-extra.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer-when-downgrade">
+  <style>
+    .brand-filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .brand-filter-btn {
+      padding: 7px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.70);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.82rem;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    .brand-filter-btn:hover {
+      background: rgba(255,255,255,0.10);
+      color: rgba(255,255,255,0.95);
+    }
+    .brand-filter-btn.active {
+      background: linear-gradient(135deg, rgba(255,61,119,0.30), rgba(255,183,3,0.25));
+      border-color: rgba(255,61,119,0.55);
+      color: #fff;
+    }
+    .brand-section { display: none; }
+    .brand-section.visible { display: block; }
+    .brand-section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.50);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      margin-top: 6px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+  </style>
 </head>
 <body>
   <header class="header">
@@ -51,12 +93,11 @@
     </div>
   </section>
 
-  <!-- FILTRO TABS -->
   <section class="section-nav">
     <div class="container">
       <div class="section-tabs">
         <button class="section-tab active" onclick="scrollToTab(this,'unitarios-j')">🥤 Unitarios</button>
-        <button class="section-tab combo-tab" onclick="scrollToTab(this,'caja-j')">🎁 Cajas</button>
+        <button class="section-tab combo-tab" onclick="scrollToTab(this,'cajas-j')">🎁 Cajas</button>
       </div>
     </div>
   </section>
@@ -64,82 +105,101 @@
   <section class="section">
     <div class="container">
 
-      <!-- UNITARIOS -->
+      <!-- ===================== UNITARIOS ===================== -->
       <div class="subsection" id="unitarios-j">
         <h3>Jugos Unitarios</h3>
-        <div class="products">
 
-          <!-- CAJAS NOEL -->
-          <div class="product-card">
-            <img src="images/cajas-jugos noel.jpg" alt="Cajas Noel (Frutilla, Ananá, Multifruita, Naranja, Limonada)" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Cajas Noel (Frutilla, Ananá, Multifruita, Naranja, Limonada)</div>
-              <div class="product-meta"><span class="price">$350</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Cajas Noel (Frutilla, Ananá, Multifruita, Naranja, Limonada)',this.previousElementSibling.querySelector('span').textContent,350)">Agregar</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <img src="images/jugo-pepito.jpg" alt="Jugo Pepito para Congelar" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Jugo Pepito para Congelar</div>
-              <div class="product-meta"><span class="price">$80</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Jugo Pepito para Congelar',this.previousElementSibling.querySelector('span').textContent,80)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/jugo-tutti.jpg" alt="Jugo Tutti" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Jugo Tutti</div>
-              <div class="product-meta"><span class="price">$65</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Jugo Tutti',this.previousElementSibling.querySelector('span').textContent,65)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/jugo-chocolatada.jpg" alt="Chocolatada" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Chocolatada</div>
-              <div class="product-meta"><span class="price">$60</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Chocolatada',this.previousElementSibling.querySelector('span').textContent,60)">Agregar</button>
-              </div>
-            </div>
-          </div>
-
+        <div class="brand-filters">
+          <button class="brand-filter-btn active" onclick="filterBrand(this,'all')">Todas las marcas</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'noel')">Noel / Arcor</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'pepito')">Pepito</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'tutti')">Tutti</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'congelar')">Para Congelar</button>
         </div>
-      </div>
 
-      <!-- COMBOS -->
-      <div class="subsection" id="caja-j">
+        <!-- NOEL / ARCOR -->
+        <div class="brand-section visible" id="brand-noel">
+          <div class="brand-section-title">Noel / Arcor</div>
+          <div class="products">
+            <div class="product-card"><img src="images/cajas-jugos noel.jpg" alt="Cajas Noel Frutilla" class="product-img"><div class="product-body"><div class="product-title">Caja Noel Frutilla 18 unidades</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Caja Noel Frutilla 18 unidades',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/cajas-jugos noel.jpg" alt="Caja Noel Naranja 18 unidades" class="product-img"><div class="product-body"><div class="product-title">Caja Noel Naranja 18 unidades</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Caja Noel Naranja 18 unidades',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/cajas-jugos noel.jpg" alt="Caja Noel Ananá 18 unidades" class="product-img"><div class="product-body"><div class="product-title">Caja Noel Ananá 18 unidades</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Caja Noel Ananá 18 unidades',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/cajas-jugos noel.jpg" alt="Caja Arcor Noel Multifruta 18 unidades" class="product-img"><div class="product-body"><div class="product-title">Caja Arcor Noel Multifruta 18 unidades</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Caja Arcor Noel Multifruta 18 unidades',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+        <!-- PEPITO -->
+        <div class="brand-section visible" id="brand-pepito">
+          <div class="brand-section-title">Pepito</div>
+          <div class="products">
+            <div class="product-card"><img src="images/jugo-pepito.jpg" alt="Jugo Pepito Durazno 160g" class="product-img"><div class="product-body"><div class="product-title">Jugo Pepito Durazno 160g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Jugo Pepito Durazno 160g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/jugo-pepito.jpg" alt="Jugo Pepito Multifruta 160g" class="product-img"><div class="product-body"><div class="product-title">Jugo Pepito Multifruta 160g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Jugo Pepito Multifruta 160g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/jugo-pepito.jpg" alt="Jugo Pepito Manzana 160g" class="product-img"><div class="product-body"><div class="product-title">Jugo Pepito Manzana 160g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Jugo Pepito Manzana 160g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+        <!-- TUTTI -->
+        <div class="brand-section visible" id="brand-tutti">
+          <div class="brand-section-title">Tutti</div>
+          <div class="products">
+            <div class="product-card"><img src="images/jugo-tutti.jpg" alt="Jugo Tutti" class="product-img"><div class="product-body"><div class="product-title">Jugo Tutti</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Jugo Tutti',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+        <!-- PARA CONGELAR -->
+        <div class="brand-section visible" id="brand-congelar">
+          <div class="brand-section-title">Para Congelar</div>
+          <div class="products">
+            <div class="product-card"><img src="images/jugo-pepito.jpg" alt="Jugos para Congelar Naranju 10 unidades" class="product-img"><div class="product-body"><div class="product-title">Jugos para Congelar Naranju 10 unidades</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Jugos para Congelar Naranju 10 unidades',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/jugo-pepito.jpg" alt="Jugos para Congelar Pepito 24 unidades" class="product-img"><div class="product-body"><div class="product-title">Jugos para Congelar Pepito 24 unidades</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Jugos para Congelar Pepito 24 unidades',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+      </div><!-- /unitarios -->
+
+      <!-- ===================== CAJAS ===================== -->
+      <div class="subsection" id="cajas-j">
         <div class="subsection-combo-header">
           <h3>🎁 Cajas</h3>
           <span class="combo-badge">¡Mejor precio!</span>
         </div>
         <div class="products">
-
           <div class="product-card product-card--combo">
-            <div class="combo-ribbon">COMBO</div>
-            <img src="images/placeholder.jpg" alt="Caja Jugo Noel x18" class="product-img">
+            <div class="combo-ribbon">CAJA</div>
+            <img src="images/cajas-jugos noel.jpg" alt="Caja Jugo Noel x18 Multifruta" class="product-img">
             <div class="product-body">
-              <div class="product-title">Caja Jugo Noel x18</div>
-              <div class="product-meta"><span class="price">$5400</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Caja Jugo Noel x18',this.previousElementSibling.querySelector('span').textContent,5400)">Agregar</button>
-              </div>
+              <div class="product-title">Caja Jugo Noel x18 Multifruta</div>
+              <div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div>
+              <div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Caja Jugo Noel x18 Multifruta',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div>
             </div>
           </div>
-
+          <div class="product-card product-card--combo">
+            <div class="combo-ribbon">CAJA</div>
+            <img src="images/cajas-jugos noel.jpg" alt="Caja Jugo Noel x18 Frutilla" class="product-img">
+            <div class="product-body">
+              <div class="product-title">Caja Jugo Noel x18 Frutilla</div>
+              <div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div>
+              <div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Caja Jugo Noel x18 Frutilla',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div>
+            </div>
+          </div>
+          <div class="product-card product-card--combo">
+            <div class="combo-ribbon">CAJA</div>
+            <img src="images/cajas-jugos noel.jpg" alt="Caja Jugo Noel x18 Naranja" class="product-img">
+            <div class="product-body">
+              <div class="product-title">Caja Jugo Noel x18 Naranja</div>
+              <div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div>
+              <div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Caja Jugo Noel x18 Naranja',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div>
+            </div>
+          </div>
+          <div class="product-card product-card--combo">
+            <div class="combo-ribbon">CAJA</div>
+            <img src="images/cajas-jugos noel.jpg" alt="Caja Jugo Noel x18 Ananá" class="product-img">
+            <div class="product-body">
+              <div class="product-title">Caja Jugo Noel x18 Ananá</div>
+              <div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div>
+              <div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Caja Jugo Noel x18 Ananá',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -165,7 +225,7 @@
       </div>
     </div>
     <div class="container footer__bottom">
-      <span>© <span id="year"></span> Golosinas Dymitri</span>
+      <span>© <span id="year"></span> Golosinas Dymitri - Todos los derechos reservados</span>
       <span class="muted">Sitio creado por Nexo Web - Salliquelo</span>
     </div>
   </footer>
@@ -199,7 +259,21 @@
       const el = document.getElementById(id);
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+
+    function filterBrand(btn, brand) {
+      document.querySelectorAll('.brand-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const sections = document.querySelectorAll('.brand-section');
+      sections.forEach(sec => {
+        brand === 'all' ? sec.classList.add('visible') : sec.classList.remove('visible');
+      });
+      if (brand !== 'all') {
+        const target = document.getElementById('brand-' + brand);
+        if (target) target.classList.add('visible');
+      }
+    }
   </script>
 </body>
 </html>
+
 
