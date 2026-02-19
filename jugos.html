@@ -53,6 +53,20 @@
       border-bottom: 1px solid rgba(255,255,255,0.07);
     }
   </style>
+
+  <style id="lazy-img-styles">
+    /* Placeholder mientras carga */
+    .product-img {
+      background-color: rgba(255,255,255,0.06);
+      transition: opacity 0.35s ease;
+    }
+    .product-img.lazy-pending {
+      opacity: 0;
+    }
+    .product-img.lazy-loaded {
+      opacity: 1;
+    }
+  </style>
 </head>
 <body>
   <header class="header">
@@ -119,10 +133,10 @@
         <div class="brand-section visible" id="brand-noel">
           <div class="brand-section-title">Noel / Arcor</div>
           <div class="products">
-            <div class="product-card"><img src="jugos4/noel frutilla.jpeg" alt="Cajas Noel Frutilla" class="product-img"><div class="product-body"><div class="product-title">Caja Noel Frutilla 18 unidades</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Caja Noel Frutilla 18 unidades',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
-            <div class="product-card"><img src="jugos4/noel naranja.jpeg" alt="Caja Noel Naranja 18 unidades" class="product-img"><div class="product-body"><div class="product-title">Caja Noel Naranja 18 unidades</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Caja Noel Naranja 18 unidades',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
-            <div class="product-card"><img src="jugos4/noel anana.jpeg" alt="Caja Noel Ananá 18 unidades" class="product-img"><div class="product-body"><div class="product-title">Caja Noel Ananá 18 unidades</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Caja Noel Ananá 18 unidades',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
-            <div class="product-card"><img src="dulce3/noel multi.jpeg" alt="Caja Arcor Noel Multifruta 18 unidades" class="product-img"><div class="product-body"><div class="product-title">Caja Arcor Noel Multifruta 18 unidades</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Caja Arcor Noel Multifruta 18 unidades',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="jugos4/noel frutilla.jpeg" alt="Cajas Noel Frutilla" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Caja Noel Frutilla 18 unidades</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Caja Noel Frutilla 18 unidades',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="jugos4/noel naranja.jpeg" alt="Caja Noel Naranja 18 unidades" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Caja Noel Naranja 18 unidades</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Caja Noel Naranja 18 unidades',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="jugos4/noel anana.jpeg" alt="Caja Noel Ananá 18 unidades" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Caja Noel Ananá 18 unidades</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Caja Noel Ananá 18 unidades',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="dulce3/noel multi.jpeg" alt="Caja Arcor Noel Multifruta 18 unidades" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Caja Arcor Noel Multifruta 18 unidades</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Caja Arcor Noel Multifruta 18 unidades',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
           </div>
         </div>
 
@@ -130,9 +144,9 @@
         <div class="brand-section visible" id="brand-pepito">
           <div class="brand-section-title">Pepito</div>
           <div class="products">
-            <div class="product-card"><img src="jugos4/pepito durazno.jpeg" alt="Jugo Pepito Durazno 160g" class="product-img"><div class="product-body"><div class="product-title">Jugo Pepito Durazno 160g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Jugo Pepito Durazno 160g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
-            <div class="product-card"><img src="jugos4/pepito multi.jpeg" alt="Jugo Pepito Multifruta 160g" class="product-img"><div class="product-body"><div class="product-title">Jugo Pepito Multifruta 160g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Jugo Pepito Multifruta 160g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
-            <div class="product-card"><img src="jugos4/pepito manzana.jpeg" alt="Jugo Pepito Manzana 160g" class="product-img"><div class="product-body"><div class="product-title">Jugo Pepito Manzana 160g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Jugo Pepito Manzana 160g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="jugos4/pepito durazno.jpeg" alt="Jugo Pepito Durazno 160g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Jugo Pepito Durazno 160g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Jugo Pepito Durazno 160g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="jugos4/pepito multi.jpeg" alt="Jugo Pepito Multifruta 160g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Jugo Pepito Multifruta 160g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Jugo Pepito Multifruta 160g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="jugos4/pepito manzana.jpeg" alt="Jugo Pepito Manzana 160g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Jugo Pepito Manzana 160g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Jugo Pepito Manzana 160g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
           </div>
         </div>
 
@@ -143,8 +157,8 @@
         <div class="brand-section visible" id="brand-congelar">
           <div class="brand-section-title">Para Congelar</div>
           <div class="products">
-            <div class="product-card"><img src="jugos4/naranju.jpeg" alt="Jugos para Congelar Naranju 10 unidades" class="product-img"><div class="product-body"><div class="product-title">Jugos para Congelar Naranju 10 unidades</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Jugos para Congelar Naranju 10 unidades',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
-            <div class="product-card"><img src="jugos4/jugo pepitos.jpeg" alt="Jugos para Congelar Pepito 24 unidades" class="product-img"><div class="product-body"><div class="product-title">Jugos para Congelar Pepito 24 unidades</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Jugos para Congelar Pepito 24 unidades',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="jugos4/naranju.jpeg" alt="Jugos para Congelar Naranju 10 unidades" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Jugos para Congelar Naranju 10 unidades</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Jugos para Congelar Naranju 10 unidades',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="jugos4/jugo pepitos.jpeg" alt="Jugos para Congelar Pepito 24 unidades" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Jugos para Congelar Pepito 24 unidades</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Jugos para Congelar Pepito 24 unidades',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
           </div>
         </div>
 
@@ -177,8 +191,8 @@
       <span class="muted">Sitio creado por Nexo Web - Salliquelo</span>
     </div>
   </footer>
-    <button id="scrollTopBtn" title="Volver arriba">↑</button>
 
+  <button id="scrollTopBtn" title="Volver arriba">↑</button>
   <a class="whatsapp-float" href="https://wa.me/5492392558607?text=Hola!%20Quiero%20hacer%20un%20pedido%20mi%20nombre%20es%20" target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a>
@@ -222,10 +236,49 @@
       }
     }
   </script>
+
+  <script id="lazy-img-script">
+    (function() {
+      // Intersection Observer para lazy load
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              const src = img.getAttribute('data-src');
+              if (src) {
+                img.src = src;
+                img.removeAttribute('data-src');
+                img.addEventListener('load', function() {
+                  img.classList.remove('lazy-pending');
+                  img.classList.add('lazy-loaded');
+                });
+                img.addEventListener('error', function() {
+                  img.classList.remove('lazy-pending');
+                  img.classList.add('lazy-loaded');
+                });
+              }
+              observer.unobserve(img);
+            }
+          });
+        }, {
+          rootMargin: '200px 0px', // Precarga 200px antes de que aparezca
+          threshold: 0
+        });
+
+        document.querySelectorAll('img.product-img[data-src]').forEach(function(img) {
+          observer.observe(img);
+        });
+      } else {
+        // Fallback para browsers sin IntersectionObserver
+        document.querySelectorAll('img.product-img[data-src]').forEach(function(img) {
+          img.src = img.getAttribute('data-src');
+          img.removeAttribute('data-src');
+          img.classList.add('lazy-loaded');
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
-
-
-
-
 
