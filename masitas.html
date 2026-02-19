@@ -10,7 +10,49 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="styles-extra.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer-when-downgrade">
+  <style>
+    .brand-filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .brand-filter-btn {
+      padding: 7px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.70);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.82rem;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    .brand-filter-btn:hover {
+      background: rgba(255,255,255,0.10);
+      color: rgba(255,255,255,0.95);
+    }
+    .brand-filter-btn.active {
+      background: linear-gradient(135deg, rgba(255,61,119,0.30), rgba(255,183,3,0.25));
+      border-color: rgba(255,61,119,0.55);
+      color: #fff;
+    }
+    .brand-section { display: none; }
+    .brand-section.visible { display: block; }
+    .brand-section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.50);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      margin-top: 6px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+  </style>
 </head>
 <body>
   <header class="header">
@@ -54,9 +96,7 @@
   <section class="section-nav">
     <div class="container">
       <div class="section-tabs">
-        <button class="section-tab active" onclick="scrollToTab(this,'terrabusi-m')">🍪 Terrabusi</button>
-        <button class="section-tab" onclick="scrollToTab(this,'cerealitas-m')">🌾 Cerealitas</button>
-        <button class="section-tab" onclick="scrollToTab(this,'oreo-m')">⚫ Oreo y otras</button>
+        <button class="section-tab active" onclick="scrollToTab(this,'unitarios-m')">🍪 Unitarios</button>
         <button class="section-tab combo-tab" onclick="scrollToTab(this,'combos-m')">🎁 Combos</button>
       </div>
     </div>
@@ -65,314 +105,139 @@
   <section class="section">
     <div class="container">
 
-      <!-- TERRABUSI -->
-      <div class="subsection" id="terrabusi-m">
-        <h3>Terrabusi</h3>
-        <div class="products">
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="Masitas Terrabusi" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Masitas Terrabusi</div>
-              <div class="product-meta"><span class="price">$3000</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Masitas Terrabusi',this.previousElementSibling.querySelector('span').textContent,3000)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="Terrabusi Express Clásicas" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Terrabusi Express Clásicas</div>
-              <div class="product-meta"><span class="price">$1200</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Terrabusi Express Clásicas',this.previousElementSibling.querySelector('span').textContent,1200)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="Terrabusi Scons" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Terrabusi Scons</div>
-              <div class="product-meta"><span class="price">$1600</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Terrabusi Scons',this.previousElementSibling.querySelector('span').textContent,1600)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="Terrabusi de Chips" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Terrabusi de Chips</div>
-              <div class="product-meta"><span class="price">$1600</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Terrabusi de Chips',this.previousElementSibling.querySelector('span').textContent,1600)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="Terrabusi Anillos" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Terrabusi Anillos</div>
-              <div class="product-meta"><span class="price">$1600</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Terrabusi Anillos',this.previousElementSibling.querySelector('span').textContent,1600)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="Terrabusi Lincoln Chocolate 153g" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Terrabusi Lincoln Chocolate 153g</div>
-              <div class="product-meta"><span class="price">$1600</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Terrabusi Lincoln Chocolate 153g',this.previousElementSibling.querySelector('span').textContent,1600)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="Terrabusi Lincoln Coco 153g" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Terrabusi Lincoln Coco 153g</div>
-              <div class="product-meta"><span class="price">$1600</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Terrabusi Lincoln Coco 153g',this.previousElementSibling.querySelector('span').textContent,1600)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="Terrabusi Lincoln Clásicas 153g" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Terrabusi Lincoln Clásicas 153g</div>
-              <div class="product-meta"><span class="price">$1600</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Terrabusi Lincoln Clásicas 153g',this.previousElementSibling.querySelector('span').textContent,1600)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="Terrabusi Lincoln Clásica 219g" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Terrabusi Lincoln Clásica 219g</div>
-              <div class="product-meta"><span class="price">$2000</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Terrabusi Lincoln Clásica 219g',this.previousElementSibling.querySelector('span').textContent,2000)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="Terrabusi Manon" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Terrabusi Manon</div>
-              <div class="product-meta"><span class="price">$1300</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Terrabusi Manon',this.previousElementSibling.querySelector('span').textContent,1300)">Agregar</button>
-              </div>
-            </div>
+      <!-- ===================== UNITARIOS ===================== -->
+      <div class="subsection" id="unitarios-m">
+        <h3>Productos Unitarios</h3>
+
+        <div class="brand-filters">
+          <button class="brand-filter-btn active" onclick="filterBrand(this,'all')">Todas las marcas</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'terrabusi')">Terrabusi</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'9deoro')">9 de Oro</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'cerealitas')">Cerealitas</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'oreo')">Oreo / Ronda</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'copadas')">Copadas</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'fantoche')">Fantoche</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'leiva')">Leiva</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'lasfor')">Lasfor</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'otros')">Otros</button>
+        </div>
+
+        <!-- TERRABUSI -->
+        <div class="brand-section visible" id="brand-terrabusi">
+          <div class="brand-section-title">Terrabusi</div>
+          <div class="products">
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Terrabusi Clásicas 103g" class="product-img"><div class="product-body"><div class="product-title">Masitas Terrabusi Clásicas 103g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Terrabusi Clásicas 103g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Terrabusi Clásicas 153g" class="product-img"><div class="product-body"><div class="product-title">Masitas Terrabusi Clásicas 153g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Terrabusi Clásicas 153g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Terrabusi Clásicas 182g" class="product-img"><div class="product-body"><div class="product-title">Masitas Terrabusi Clásicas 182g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Terrabusi Clásicas 182g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Terrabusi Clásicas 219g" class="product-img"><div class="product-body"><div class="product-title">Masitas Terrabusi Clásicas 219g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Terrabusi Clásicas 219g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Terrabusi Chocolate 153g" class="product-img"><div class="product-body"><div class="product-title">Masitas Terrabusi Chocolate 153g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Terrabusi Chocolate 153g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Terrabusi Coco 153g" class="product-img"><div class="product-body"><div class="product-title">Masitas Terrabusi Coco 153g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Terrabusi Coco 153g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Terrabusi Scons 160g" class="product-img"><div class="product-body"><div class="product-title">Masitas Terrabusi Scons 160g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Terrabusi Scons 160g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Terrabusi Boca de Dama 170g" class="product-img"><div class="product-body"><div class="product-title">Masitas Terrabusi Boca de Dama 170g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Terrabusi Boca de Dama 170g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Terrabusi Anillos 170g" class="product-img"><div class="product-body"><div class="product-title">Masitas Terrabusi Anillos 170g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Terrabusi Anillos 170g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Terrabusi Chips 144g" class="product-img"><div class="product-body"><div class="product-title">Masitas Terrabusi Chips 144g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Terrabusi Chips 144g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Terrabusi Surtidas 390g" class="product-img"><div class="product-body"><div class="product-title">Masitas Terrabusi Surtidas 390g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Terrabusi Surtidas 390g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Pack x4 Terrabusi Melba" class="product-img"><div class="product-body"><div class="product-title">Pack x4 Terrabusi Melba</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Pack x4 Terrabusi Melba',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Pack x4 Masitas Terrabusi Duquesa" class="product-img"><div class="product-body"><div class="product-title">Pack x4 Masitas Terrabusi Duquesa</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Pack x4 Masitas Terrabusi Duquesa',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
           </div>
         </div>
-      </div>
 
-      <!-- CEREALITAS -->
-      <div class="subsection" id="cerealitas-m">
-        <h3>Cerealitas y similares</h3>
-        <div class="products">
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="Cerealitas Granola" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Cerealitas Granola</div>
-              <div class="product-meta"><span class="price">$1900</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Cerealitas Granola',this.previousElementSibling.querySelector('span').textContent,1900)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="Cerealitas Clásicas" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Cerealitas Clásicas</div>
-              <div class="product-meta"><span class="price">$1900</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Cerealitas Clásicas',this.previousElementSibling.querySelector('span').textContent,1900)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="Cerealitas Salvado" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Cerealitas Salvado</div>
-              <div class="product-meta"><span class="price">$1900</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Cerealitas Salvado',this.previousElementSibling.querySelector('span').textContent,1900)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="Cerealitas Avena y Cacao" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Cerealitas Avena y Cacao</div>
-              <div class="product-meta"><span class="price">$2000</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Cerealitas Avena y Cacao',this.previousElementSibling.querySelector('span').textContent,2000)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="9 de Oro Azucaradas" class="product-img">
-            <div class="product-body">
-              <div class="product-title">9 de Oro Azucaradas</div>
-              <div class="product-meta"><span class="price">$1300</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('9 de Oro Azucaradas',this.previousElementSibling.querySelector('span').textContent,1300)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="9 de Oro Clásicas" class="product-img">
-            <div class="product-body">
-              <div class="product-title">9 de Oro Clásicas</div>
-              <div class="product-meta"><span class="price">$1300</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('9 de Oro Clásicas',this.previousElementSibling.querySelector('span').textContent,1300)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="9 de Oro Chips de Chocolate" class="product-img">
-            <div class="product-body">
-              <div class="product-title">9 de Oro Chips de Chocolate</div>
-              <div class="product-meta"><span class="price">$1200</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('9 de Oro Chips de Chocolate',this.previousElementSibling.querySelector('span').textContent,1200)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="9 de Oro Chips Blancos" class="product-img">
-            <div class="product-body">
-              <div class="product-title">9 de Oro Chips Blancos</div>
-              <div class="product-meta"><span class="price">$1200</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('9 de Oro Chips Blancos',this.previousElementSibling.querySelector('span').textContent,1200)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="9 de Oro Sconcitos" class="product-img">
-            <div class="product-body">
-              <div class="product-title">9 de Oro Sconcitos</div>
-              <div class="product-meta"><span class="price">$1400</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('9 de Oro Sconcitos',this.previousElementSibling.querySelector('span').textContent,1400)">Agregar</button>
-              </div>
-            </div>
+        <!-- 9 DE ORO -->
+        <div class="brand-section visible" id="brand-9deoro">
+          <div class="brand-section-title">9 de Oro</div>
+          <div class="products">
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas 9 de Oro Azucaradas 210g" class="product-img"><div class="product-body"><div class="product-title">Masitas 9 de Oro Azucaradas 210g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas 9 de Oro Azucaradas 210g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas 9 de Oro Clásicas 200g" class="product-img"><div class="product-body"><div class="product-title">Masitas 9 de Oro Clásicas 200g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas 9 de Oro Clásicas 200g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas 9 de Oro Chips de Chocolate 120g" class="product-img"><div class="product-body"><div class="product-title">Masitas 9 de Oro Chips de Chocolate 120g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas 9 de Oro Chips de Chocolate 120g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas 9 de Oro Chips Blancos 120g" class="product-img"><div class="product-body"><div class="product-title">Masitas 9 de Oro Chips Blancos 120g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas 9 de Oro Chips Blancos 120g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas 9 de Oro Sconcitos 200g" class="product-img"><div class="product-body"><div class="product-title">Masitas 9 de Oro Sconcitos 200g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas 9 de Oro Sconcitos 200g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
           </div>
         </div>
-      </div>
 
-      <!-- OREO Y OTRAS -->
-      <div class="subsection" id="oreo-m">
-        <h3>Oreo y otras marcas</h3>
-        <div class="products">
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="Masitas Oreo" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Masitas Oreo</div>
-              <div class="product-meta"><span class="price">$2100</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Masitas Oreo',this.previousElementSibling.querySelector('span').textContent,2100)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="Ronda Larguitas" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Ronda Larguitas</div>
-              <div class="product-meta"><span class="price">$1500</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Ronda Larguitas',this.previousElementSibling.querySelector('span').textContent,1500)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="Ronda Triangulitas" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Ronda Triangulitas</div>
-              <div class="product-meta"><span class="price">$1500</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Ronda Triangulitas',this.previousElementSibling.querySelector('span').textContent,1500)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="Copadas Chip de Chocolate 300g" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Copadas Chip de Chocolate 300g</div>
-              <div class="product-meta"><span class="price">$1500</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Copadas Chip de Chocolate 300g',this.previousElementSibling.querySelector('span').textContent,1500)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="Copadas Vainilla 160g" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Copadas Vainilla 160g</div>
-              <div class="product-meta"><span class="price">$1300</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Copadas Vainilla 160g',this.previousElementSibling.querySelector('span').textContent,1300)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="Copadas Mousse de Chocolate 160g" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Copadas Mousse de Chocolate 160g</div>
-              <div class="product-meta"><span class="price">$1300</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Copadas Mousse de Chocolate 160g',this.previousElementSibling.querySelector('span').textContent,1300)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/placeholder.jpg" alt="Copadas Chocolate 160g" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Copadas Chocolate 160g</div>
-              <div class="product-meta"><span class="price">$1300</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Copadas Chocolate 160g',this.previousElementSibling.querySelector('span').textContent,1300)">Agregar</button>
-              </div>
-            </div>
+        <!-- CEREALITAS -->
+        <div class="brand-section visible" id="brand-cerealitas">
+          <div class="brand-section-title">Cerealitas</div>
+          <div class="products">
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Cerealitas Granola 170g" class="product-img"><div class="product-body"><div class="product-title">Masitas Cerealitas Granola 170g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Cerealitas Granola 170g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Cerealitas Avena y Cacao 170g" class="product-img"><div class="product-body"><div class="product-title">Masitas Cerealitas Avena y Cacao 170g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Cerealitas Avena y Cacao 170g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
           </div>
         </div>
-      </div>
 
-      <!-- COMBOS -->
+        <!-- OREO / RONDA -->
+        <div class="brand-section visible" id="brand-oreo">
+          <div class="brand-section-title">Oreo / Ronda</div>
+          <div class="products">
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Pepitos con Chispas 119g" class="product-img"><div class="product-body"><div class="product-title">Masitas Pepitos con Chispas 119g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Pepitos con Chispas 119g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Oreo Original 118g" class="product-img"><div class="product-body"><div class="product-title">Masitas Oreo Original 118g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Oreo Original 118g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Oreo Chocolate 118g" class="product-img"><div class="product-body"><div class="product-title">Masitas Oreo Chocolate 118g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Oreo Chocolate 118g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Oreo Frutilla 118g" class="product-img"><div class="product-body"><div class="product-title">Masitas Oreo Frutilla 118g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Oreo Frutilla 118g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Oreo Menta 118g" class="product-img"><div class="product-body"><div class="product-title">Masitas Oreo Menta 118g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Oreo Menta 118g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Ronda Larguitas 150g" class="product-img"><div class="product-body"><div class="product-title">Masitas Ronda Larguitas 150g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Ronda Larguitas 150g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Ronda Triangulitas 150g" class="product-img"><div class="product-body"><div class="product-title">Masitas Ronda Triangulitas 150g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Ronda Triangulitas 150g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+        <!-- COPADAS -->
+        <div class="brand-section visible" id="brand-copadas">
+          <div class="brand-section-title">Copadas</div>
+          <div class="products">
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Copadas Chip de Chocolate 300g" class="product-img"><div class="product-body"><div class="product-title">Masitas Copadas Chip de Chocolate 300g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Copadas Chip de Chocolate 300g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Copadas Vainilla 160g" class="product-img"><div class="product-body"><div class="product-title">Masitas Copadas Vainilla 160g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Copadas Vainilla 160g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Copadas Frutilla 160g" class="product-img"><div class="product-body"><div class="product-title">Masitas Copadas Frutilla 160g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Copadas Frutilla 160g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Copadas Mousse de Chocolate 160g" class="product-img"><div class="product-body"><div class="product-title">Masitas Copadas Mousse de Chocolate 160g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Copadas Mousse de Chocolate 160g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Copadas Chocolate 160g" class="product-img"><div class="product-body"><div class="product-title">Masitas Copadas Chocolate 160g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Copadas Chocolate 160g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+        <!-- FANTOCHE -->
+        <div class="brand-section visible" id="brand-fantoche">
+          <div class="brand-section-title">Fantoche</div>
+          <div class="products">
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Fantoche Horóscopo Chocolate 240g" class="product-img"><div class="product-body"><div class="product-title">Masitas Fantoche Horóscopo Chocolate 240g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Fantoche Horóscopo Chocolate 240g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Fantoche Tapitas Coco 350g" class="product-img"><div class="product-body"><div class="product-title">Masitas Fantoche Tapitas Coco 350g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Fantoche Tapitas Coco 350g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Fantoche Tapitas 350g" class="product-img"><div class="product-body"><div class="product-title">Masitas Fantoche Tapitas 350g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Fantoche Tapitas 350g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+        <!-- LEIVA -->
+        <div class="brand-section visible" id="brand-leiva">
+          <div class="brand-section-title">Leiva</div>
+          <div class="products">
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Leiva Clásicas 330g" class="product-img"><div class="product-body"><div class="product-title">Masitas Leiva Clásicas 330g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Leiva Clásicas 330g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Leiva Marineras Sin Sal 330g" class="product-img"><div class="product-body"><div class="product-title">Masitas Leiva Marineras Sin Sal 330g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Leiva Marineras Sin Sal 330g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+        <!-- LASFOR -->
+        <div class="brand-section visible" id="brand-lasfor">
+          <div class="brand-section-title">Lasfor</div>
+          <div class="products">
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Lasfor Almohaditas Rellenas Frutilla 200g" class="product-img"><div class="product-body"><div class="product-title">Lasfor Almohaditas Rellenas Frutilla 200g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Lasfor Almohaditas Rellenas Frutilla 200g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Lasfor Copos de Maíz Azucarados 240g" class="product-img"><div class="product-body"><div class="product-title">Lasfor Copos de Maíz Azucarados 240g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Lasfor Copos de Maíz Azucarados 240g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Lasfor Bolitas Chocolatadas 180g" class="product-img"><div class="product-body"><div class="product-title">Lasfor Bolitas Chocolatadas 180g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Lasfor Bolitas Chocolatadas 180g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+        <!-- OTROS -->
+        <div class="brand-section visible" id="brand-otros">
+          <div class="brand-section-title">Otros</div>
+          <div class="products">
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Terepin Pepas con Membrillo 500g" class="product-img"><div class="product-body"><div class="product-title">Masitas Terepin Pepas con Membrillo 500g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Terepin Pepas con Membrillo 500g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Riedmar Pepa Nevada 350g" class="product-img"><div class="product-body"><div class="product-title">Masitas Riedmar Pepa Nevada 350g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Riedmar Pepa Nevada 350g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Zupay Obleas Frutilla 100g" class="product-img"><div class="product-body"><div class="product-title">Masitas Zupay Obleas Frutilla 100g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Zupay Obleas Frutilla 100g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Obleas Limón 100g" class="product-img"><div class="product-body"><div class="product-title">Masitas Obleas Limón 100g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Obleas Limón 100g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Zupay Obleas Vainilla 100g" class="product-img"><div class="product-body"><div class="product-title">Masitas Zupay Obleas Vainilla 100g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Zupay Obleas Vainilla 100g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Recital Vainilla 100g" class="product-img"><div class="product-body"><div class="product-title">Masitas Recital Vainilla 100g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Recital Vainilla 100g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Recital Chocolate 100g" class="product-img"><div class="product-body"><div class="product-title">Masitas Recital Chocolate 100g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Recital Chocolate 100g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Recital Frutilla y Chocolate 100g" class="product-img"><div class="product-body"><div class="product-title">Masitas Recital Frutilla y Chocolate 100g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Recital Frutilla y Chocolate 100g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Tym Dulce de Leche 100g" class="product-img"><div class="product-body"><div class="product-title">Masitas Tym Dulce de Leche 100g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Tym Dulce de Leche 100g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="images/placeholder.jpg" alt="Masitas Tym Vainilla y Frutilla 100g" class="product-img"><div class="product-body"><div class="product-title">Masitas Tym Vainilla y Frutilla 100g</div><div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Masitas Tym Vainilla y Frutilla 100g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+      </div><!-- /unitarios -->
+
+      <!-- ===================== COMBOS ===================== -->
       <div class="subsection" id="combos-m">
         <div class="subsection-combo-header">
           <h3>🎁 Combos</h3>
@@ -384,11 +249,8 @@
             <img src="images/placeholder.jpg" alt="Combo Masitas Resital 3x" class="product-img">
             <div class="product-body">
               <div class="product-title">Combo Masitas Resital 3x</div>
-              <div class="product-meta"><span class="price">$2100</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Combo Masitas Resital 3x',this.previousElementSibling.querySelector('span').textContent,2100)">Agregar</button>
-              </div>
+              <div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div>
+              <div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Combo Masitas Resital 3x',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div>
             </div>
           </div>
           <div class="product-card product-card--combo">
@@ -396,11 +258,8 @@
             <img src="images/placeholder.jpg" alt="Combo Masitas Tym 3x" class="product-img">
             <div class="product-body">
               <div class="product-title">Combo Masitas Tym 3x</div>
-              <div class="product-meta"><span class="price">$2100</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Combo Masitas Tym 3x',this.previousElementSibling.querySelector('span').textContent,2100)">Agregar</button>
-              </div>
+              <div class="product-meta"><span class="price">$0</span><span class="stock disponible">Disponible</span></div>
+              <div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Combo Masitas Tym 3x',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div>
             </div>
           </div>
         </div>
@@ -428,7 +287,7 @@
       </div>
     </div>
     <div class="container footer__bottom">
-      <span>© <span id="year"></span> Golosinas Dymitri</span>
+      <span>© <span id="year"></span> Golosinas Dymitri - Todos los derechos reservados</span>
       <span class="muted">Sitio creado por Nexo Web - Salliquelo</span>
     </div>
   </footer>
@@ -461,6 +320,19 @@
       btn.classList.add('active');
       const el = document.getElementById(id);
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function filterBrand(btn, brand) {
+      document.querySelectorAll('.brand-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const sections = document.querySelectorAll('.brand-section');
+      sections.forEach(sec => {
+        brand === 'all' ? sec.classList.add('visible') : sec.classList.remove('visible');
+      });
+      if (brand !== 'all') {
+        const target = document.getElementById('brand-' + brand);
+        if (target) target.classList.add('visible');
+      }
     }
   </script>
 </body>
