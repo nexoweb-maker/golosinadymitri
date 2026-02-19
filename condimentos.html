@@ -200,6 +200,20 @@
       .tab-pill { padding: 9px 18px; font-size: 0.85rem; }
     }
   </style>
+
+  <style id="lazy-img-styles">
+    /* Placeholder mientras carga */
+    .product-img {
+      background-color: rgba(255,255,255,0.06);
+      transition: opacity 0.35s ease;
+    }
+    .product-img.lazy-pending {
+      opacity: 0;
+    }
+    .product-img.lazy-loaded {
+      opacity: 1;
+    }
+  </style>
 </head>
 <body>
 
@@ -1257,6 +1271,49 @@
       qty = Math.max(1, qty + delta);
       span.textContent = qty;
     }
+  </script>
+
+  <script id="lazy-img-script">
+    (function() {
+      // Intersection Observer para lazy load
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              const src = img.getAttribute('data-src');
+              if (src) {
+                img.src = src;
+                img.removeAttribute('data-src');
+                img.addEventListener('load', function() {
+                  img.classList.remove('lazy-pending');
+                  img.classList.add('lazy-loaded');
+                });
+                img.addEventListener('error', function() {
+                  img.classList.remove('lazy-pending');
+                  img.classList.add('lazy-loaded');
+                });
+              }
+              observer.unobserve(img);
+            }
+          });
+        }, {
+          rootMargin: '200px 0px', // Precarga 200px antes de que aparezca
+          threshold: 0
+        });
+
+        document.querySelectorAll('img.product-img[data-src]').forEach(function(img) {
+          observer.observe(img);
+        });
+      } else {
+        // Fallback para browsers sin IntersectionObserver
+        document.querySelectorAll('img.product-img[data-src]').forEach(function(img) {
+          img.src = img.getAttribute('data-src');
+          img.removeAttribute('data-src');
+          img.classList.add('lazy-loaded');
+        });
+      }
+    })();
   </script>
 </body>
 </html>
