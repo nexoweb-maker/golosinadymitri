@@ -11,9 +11,50 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="styles-extra.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <style>
+    .brand-filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .brand-filter-btn {
+      padding: 7px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.70);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.82rem;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    .brand-filter-btn:hover {
+      background: rgba(255,255,255,0.10);
+      color: rgba(255,255,255,0.95);
+    }
+    .brand-filter-btn.active {
+      background: linear-gradient(135deg, rgba(255,61,119,0.30), rgba(255,183,3,0.25));
+      border-color: rgba(255,61,119,0.55);
+      color: #fff;
+    }
+    .brand-section { display: none; }
+    .brand-section.visible { display: block; }
+    .brand-section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.50);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      margin-top: 6px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+  </style>
 </head>
 <body>
-  <!-- HEADER -->
   <header class="header">
     <div class="container header__inner">
       <a class="brand" href="index.html">
@@ -24,31 +65,27 @@
         </div>
       </a>
       <nav class="nav">
-        <a href="salado.html" target="_blank" class="nav__link">Salado</a>
-        <a href="dulce.html" target="_blank" class="nav__link">Dulce</a>
-        <a href="condimentos.html" target="_blank" class="nav__link">Condimentos</a>
-        <a href="jugos.html" target="_blank" class="nav__link">Jugos</a>
-        <a href="masitas.html" target="_blank" class="nav__link">Masitas</a>
+        <a href="salado.html" class="nav__link">Salado</a>
+        <a href="dulce.html" class="nav__link">Dulce</a>
+        <a href="condimentos.html" class="nav__link">Condimentos</a>
+        <a href="jugos.html" class="nav__link">Jugos</a>
+        <a href="masitas.html" class="nav__link">Masitas</a>
         <a href="index.html#contacto" class="nav__link nav__link--btn">Contacto</a>
-        <button class="cart-btn" id="openCartBtn">
-          🛒 <span class="cart-badge" id="cartCount">0</span>
-        </button>
+        <button class="cart-btn" id="openCartBtn">🛒 <span class="cart-badge" id="cartCount">0</span></button>
       </nav>
       <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
     </div>
-    <!-- MENU MOVIL -->
     <div class="mobile-menu" id="mobileMenu">
-      <a href="salado.html" target="_blank">Salado</a>
-      <a href="dulce.html" target="_blank">Dulce</a>
-      <a href="condimentos.html" target="_blank">Condimentos</a>
-      <a href="jugos.html" target="_blank">Jugos</a>
-      <a href="masitas.html" target="_blank">Masitas</a>
+      <a href="salado.html">Salado</a>
+      <a href="dulce.html">Dulce</a>
+      <a href="condimentos.html">Condimentos</a>
+      <a href="jugos.html">Jugos</a>
+      <a href="masitas.html">Masitas</a>
       <a href="index.html#contacto">Contacto</a>
       <button id="openCartBtnMobile">🛒 Carrito (<span id="cartCountMobile">0</span>)</button>
     </div>
   </header>
 
-  <!-- PAGE HERO -->
   <section class="page-hero">
     <div class="container">
       <h1>Productos Salados</h1>
@@ -56,7 +93,6 @@
     </div>
   </section>
 
-  <!-- FILTRO TABS -->
   <section class="section-nav">
     <div class="container">
       <div class="section-tabs">
@@ -66,520 +102,140 @@
     </div>
   </section>
 
-  <!-- SECCION SALADO -->
   <section class="section">
     <div class="container">
 
       <!-- UNITARIOS -->
       <div class="subsection" id="unitarios-s">
         <h3>Productos Unitarios</h3>
-        <div class="products">
-          <div class="product-card">
-            <img src="images/cops-manicascara.jpg" alt="Mani con Cáscara 2kg" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Mani con Cáscara 2kg</div>
-              <div class="product-meta">
-                <span class="price">$80</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Mani con Cáscara 2kg', this.previousElementSibling.querySelector('span').textContent, 80)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/cops-tutuca.jpg" alt="Tutuca" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Tutuca</div>
-              <div class="product-meta">
-                <span class="price">$40</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Tutuca', this.previousElementSibling.querySelector('span').textContent, 40)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/cops-aroscebolla.jpg" alt="Aritos de Cebolla" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Aritos de Cebolla</div>
-              <div class="product-meta">
-                <span class="price">$45</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Aritos de Cebolla', this.previousElementSibling.querySelector('span').textContent, 45)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/cops-conitos600.jpg" alt="Conitos 600g" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Conitos 600g</div>
-              <div class="product-meta">
-                <span class="price">$55</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Conitos 600g', this.previousElementSibling.querySelector('span').textContent, 55)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/cops-pancetita.jpg" alt="Pancetita" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Pancetita</div>
-              <div class="product-meta">
-                <span class="price">$30</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Pancetita', this.previousElementSibling.querySelector('span').textContent, 30)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/cops-pizzetin.jpg" alt="Pizzetin" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Pizzetin</div>
-              <div class="product-meta">
-                <span class="price">$35</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Pizzetin', this.previousElementSibling.querySelector('span').textContent, 35)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/cops-bolitascrocantes.jpg" alt="Bolitas Crocantes" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Bolitas Crocantes</div>
-              <div class="product-meta">
-                <span class="price">$40</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Bolitas Crocantes', this.previousElementSibling.querySelector('span').textContent, 40)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/cops-palitos.jpg" alt="Palitos" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Palitos</div>
-              <div class="product-meta">
-                <span class="price">$30</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Palitos', this.previousElementSibling.querySelector('span').textContent, 30)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/cops-manicrocante.jpg" alt="Mani Crocante Queso, Jamón y Pizza" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Mani Crocante Queso, Jamón y Pizza</div>
-              <div class="product-meta">
-                <span class="price">$50</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Mani Crocante Queso, Jamón y Pizza', this.previousElementSibling.querySelector('span').textContent, 50)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/cops-chizitos.jpg" alt="Chizitos" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Chizitos</div>
-              <div class="product-meta">
-                <span class="price">$35</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Chizitos', this.previousElementSibling.querySelector('span').textContent, 35)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/cops-papa pay.jpg" alt="Papa Pay" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Papa Pay</div>
-              <div class="product-meta">
-                <span class="price">$50</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Papa Pay', this.previousElementSibling.querySelector('span').textContent, 50)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/cops-cascarones.jpg" alt="Cascarones 200g" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Cascarones 200g</div>
-              <div class="product-meta">
-                <span class="price">$40</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Cascarones 200g', this.previousElementSibling.querySelector('span').textContent, 40)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/quento-papasclasicas.jpg" alt="Quento Papas Clásicas" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Quento Papas Clásicas</div>
-              <div class="product-meta">
-                <span class="price">$50</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Quento Papas Clásicas', this.previousElementSibling.querySelector('span').textContent, 50)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/nikitos-chizitos.jpg" alt="Nikitos Chizitos" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Nikitos Chizitos</div>
-              <div class="product-meta">
-                <span class="price">$45</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Nikitos Chizitos', this.previousElementSibling.querySelector('span').textContent, 45)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/nikitos-papas.jpg" alt="Nikitos Papas" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Nikitos Papas</div>
-              <div class="product-meta">
-                <span class="price">$45</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Nikitos Papas', this.previousElementSibling.querySelector('span').textContent, 45)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/capullos-flor.jpg" alt="Capullitos en Flor 1k" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Capullitos en Flor 1k</div>
-              <div class="product-meta">
-                <span class="price">$55</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Capullitos en Flor 1k', this.previousElementSibling.querySelector('span').textContent, 55)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/palito maiz.jpg" alt="Palitos de Maíz 80g" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Palitos de Maíz 80g</div>
-              <div class="product-meta">
-                <span class="price">$30</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Palitos de Maíz 80g', this.previousElementSibling.querySelector('span').textContent, 30)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/cañitos.jpg" alt="Cañitos" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Cañitos</div>
-              <div class="product-meta">
-                <span class="price">$35</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Cañitos', this.previousElementSibling.querySelector('span').textContent, 35)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/tapitas.jpg" alt="Tapitas" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Tapitas</div>
-              <div class="product-meta">
-                <span class="price">$30</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Tapitas', this.previousElementSibling.querySelector('span').textContent, 30)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images2/bolifrut.jpg" alt="Bolifrut" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Bolifrut</div>
-              <div class="product-meta">
-                <span class="price">$40</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Bolifrut', this.previousElementSibling.querySelector('span').textContent, 40)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/capullo-aroscebolla.jpg" alt="Aros de Cebollas" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Aros de Cebollas</div>
-              <div class="product-meta">
-                <span class="price">$45</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Aros de Cebollas', this.previousElementSibling.querySelector('span').textContent, 45)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/goodshow-papaacanalada.jpg" alt="Good Show Papa Acanalada" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Good Show Papa Acanalada</div>
-              <div class="product-meta">
-                <span class="price">$50</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Good Show Papa Acanalada', this.previousElementSibling.querySelector('span').textContent, 50)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/goodshow-papasclasicas.jpg" alt="Good Show Papa Clásica" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Good Show Papa Clásica</div>
-              <div class="product-meta">
-                <span class="price">$50</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Good Show Papa Clásica', this.previousElementSibling.querySelector('span').textContent, 50)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/krachito-papas saborizadas.jpg" alt="Krachitos Cheddar y Jamón 330g" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Krachitos Cheddar y Jamón 330g</div>
-              <div class="product-meta">
-                <span class="price">$45</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Krachitos Cheddar y Jamón 330g', this.previousElementSibling.querySelector('span').textContent, 45)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/pehuamar-papas acanaladas.jpg" alt="Pehuamar Acanalada" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Pehuamar Acanalada</div>
-              <div class="product-meta">
-                <span class="price">$50</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Pehuamar Acanalada', this.previousElementSibling.querySelector('span').textContent, 50)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/pehuamar-papas clasicas.jpg" alt="Pehuamar Clásica" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Pehuamar Clásica</div>
-              <div class="product-meta">
-                <span class="price">$50</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Pehuamar Clásica', this.previousElementSibling.querySelector('span').textContent, 50)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/cops-papas crema.jpg" alt="Cops Papas Fritas Crema y Cebolla" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Cops Papas Fritas Crema y Cebolla</div>
-              <div class="product-meta">
-                <span class="price">$35</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Cops Papas Fritas Crema y Cebolla', this.previousElementSibling.querySelector('span').textContent, 35)">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/cops-papas mozzarella.jpg" alt="Cops Papas Fritas Mozzarella" class="product-img">
-            <div class="product-body">
-              <div class="product-title">Cops Papas Fritas Mozzarella</div>
-              <div class="product-meta">
-                <span class="price">$35</span>
-                <span class="stock disponible">Disponible</span>
-              </div>
-              <div class="product-actions">
-                <div class="qty">
-                  <button onclick="changeQty(this, -1)">-</button>
-                  <span>0</span>
-                  <button onclick="changeQty(this, 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Cops Papas Fritas Mozzarella', this.previousElementSibling.querySelector('span').textContent, 35)">Agregar</button>
-              </div>
-            </div>
+
+        <div class="brand-filters">
+          <button class="brand-filter-btn active" onclick="filterBrand(this,'all')">Todas las marcas</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'goodshow')">Good Show</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'quento')">Quento</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'cops')">Cops</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'krachitos')">Krachitos</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'nikitos')">Nikitos</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'pehuamar')">Pehuamar</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'saladix')">Saladix</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'urquiza')">Urquiza</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'otros')">Otros</button>
+        </div>
+
+        <!-- GOOD SHOW -->
+        <div class="brand-section visible" id="brand-goodshow">
+          <div class="brand-section-title">Good Show</div>
+          <div class="products">
+            <div class="product-card"><img src="salado/goog show papas fritas jamon serrano.jpg" alt="Good Show Papas Fritas Jamón Serrano" class="product-img"><div class="product-body"><div class="product-title">Good Show Papas Fritas Jamón Serrano</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Good Show Papas Fritas Jamón Serrano',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Good Show Papas Fritas Crema y Cebolla.jpeg" alt="Good Show Papas Fritas Crema y Cebolla" class="product-img"><div class="product-body"><div class="product-title">Good Show Papas Fritas Crema y Cebolla</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Good Show Papas Fritas Crema y Cebolla',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Good Show Pimienta Negra y Sal Marina.jpeg" alt="Good Show Pimienta Negra y Sal Marina" class="product-img"><div class="product-body"><div class="product-title">Good Show Pimienta Negra y Sal Marina</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Good Show Pimienta Negra y Sal Marina',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Good Show Papas Fritas Cheddar.jpeg" alt="Good Show Papas Fritas Cheddar" class="product-img"><div class="product-body"><div class="product-title">Good Show Papas Fritas Cheddar</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Good Show Papas Fritas Cheddar',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Good Show Huevo Frito 63g.jpeg" alt="Good Show Huevo Frito 63g" class="product-img"><div class="product-body"><div class="product-title">Good Show Huevo Frito 63g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Good Show Huevo Frito 63g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Good Show Papas Clásicas 430g.jpeg" alt="Good Show Papas Clásicas 430g" class="product-img"><div class="product-body"><div class="product-title">Good Show Papas Clásicas 430g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Good Show Papas Clásicas 430g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Good Show Corte Americano 430g.jpeg" alt="Good Show Corte Americano 430g" class="product-img"><div class="product-body"><div class="product-title">Good Show Corte Americano 430g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Good Show Corte Americano 430g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
           </div>
         </div>
-      </div>
+
+        <!-- QUENTO -->
+        <div class="brand-section visible" id="brand-quento">
+          <div class="brand-section-title">Quento</div>
+          <div class="products">
+            <div class="product-card"><img src="salado/Quento Mega Queso 300g.jpeg" alt="Quento Mega Queso 300g" class="product-img"><div class="product-body"><div class="product-title">Quento Mega Queso 300g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Quento Mega Queso 300g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Quento Papas Clásicas 475g.jpeg" alt="Quento Papas Clásicas 475g" class="product-img"><div class="product-body"><div class="product-title">Quento Papas Clásicas 475g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Quento Papas Clásicas 475g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Quento Papas Onduladas 475g.jpeg" alt="Quento Papas Onduladas 475g" class="product-img"><div class="product-body"><div class="product-title">Quento Papas Onduladas 475g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Quento Papas Onduladas 475g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+        <!-- COPS -->
+        <div class="brand-section visible" id="brand-cops">
+          <div class="brand-section-title">Cops</div>
+          <div class="products">
+            <div class="product-card"><img src="salado/Cops Palitos 1k.jpeg" alt="Cops Palitos 1k" class="product-img"><div class="product-body"><div class="product-title">Cops Palitos 1k</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Palitos 1k',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Cops Papa Pay 500g.jpeg" alt="Cops Papa Pay 500g" class="product-img"><div class="product-body"><div class="product-title">Cops Papa Pay 500g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Papa Pay 500g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Cops Cascarones 200g.jpeg" alt="Cops Cascarones 200g" class="product-img"><div class="product-body"><div class="product-title">Cops Cascarones 200g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Cascarones 200g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Cops Conitos 300g.jpeg" alt="Cops Conitos 300g" class="product-img"><div class="product-body"><div class="product-title">Cops Conitos 300g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Conitos 300g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Cops Papas Fritas 800g.jpeg" alt="Cops Papas Fritas 800g" class="product-img"><div class="product-body"><div class="product-title">Cops Papas Fritas 800g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Papas Fritas 800g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Cops Bolitas Crocantes 800g.jpeg" alt="Cops Bolitas Crocantes 800g" class="product-img"><div class="product-body"><div class="product-title">Cops Bolitas Crocantes 800g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Bolitas Crocantes 800g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Cops Pancetitas 400g.jpeg" alt="Cops Pancetitas 400g" class="product-img"><div class="product-body"><div class="product-title">Cops Pancetitas 400g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Pancetitas 400g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Cops Aritos de Cebollas 400g.jpeg" alt="Cops Aritos de Cebollas 400g" class="product-img"><div class="product-body"><div class="product-title">Cops Aritos de Cebollas 400g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Aritos de Cebollas 400g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Cops Tutucas 1k.jpeg" alt="Cops Tutucas 1k" class="product-img"><div class="product-body"><div class="product-title">Cops Tutucas 1k</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Tutucas 1k',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Cops Maní con Cáscara 2k.jpeg" alt="Cops Maní con Cáscara 2k" class="product-img"><div class="product-body"><div class="product-title">Cops Maní con Cáscara 2k</div><div class="product-meta"><span class="price">$12500</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Maní con Cáscara 2k',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Cops Papas Fritas Ketchup 90g.jpeg" alt="Cops Papas Fritas Ketchup 90g" class="product-img"><div class="product-body"><div class="product-title">Cops Papas Fritas Ketchup 90g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Papas Fritas Ketchup 90g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Cops Papas Fritas Pizza Muzzarella 90g.jpeg" alt="Cops Papas Fritas Pizza Muzzarella 90g" class="product-img"><div class="product-body"><div class="product-title">Cops Papas Fritas Pizza Muzzarella 90g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Papas Fritas Pizza Muzzarella 90g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Cops Papas Fritas Jamón 90g.jpeg" alt="Cops Papas Fritas Jamón 90g" class="product-img"><div class="product-body"><div class="product-title">Cops Papas Fritas Jamón 90g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Papas Fritas Jamón 90g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Cops Papas Fritas Corte Americano 90g.jpeg" alt="Cops Papas Fritas Corte Americano 90g" class="product-img"><div class="product-body"><div class="product-title">Cops Papas Fritas Corte Americano 90g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Papas Fritas Corte Americano 90g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Cops Pizzetin 600g.jpeg" alt="Cops Pizzetin 600g" class="product-img"><div class="product-body"><div class="product-title">Cops Pizzetin 600g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Pizzetin 600g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+        <!-- KRACHITOS -->
+        <div class="brand-section visible" id="brand-krachitos">
+          <div class="brand-section-title">Krachitos</div>
+          <div class="products">
+            <div class="product-card"><img src="salado/Krachitos Cheddar 330g.jpeg" alt="Krachitos Cheddar 330g" class="product-img"><div class="product-body"><div class="product-title">Krachitos Cheddar 330g</div><div class="product-meta"><span class="price">$6800</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Krachitos Cheddar 330g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Krachitos Jamón Serrano 330g.jpeg" alt="Krachitos Jamón Serrano 330g" class="product-img"><div class="product-body"><div class="product-title">Krachitos Jamón Serrano 330g</div><div class="product-meta"><span class="price">$6800</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Krachitos Jamón Serrano 330g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Krachitos Corte Americano 420g.jpeg" alt="Krachitos Corte Americano 420g" class="product-img"><div class="product-body"><div class="product-title">Krachitos Corte Americano 420g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Krachitos Corte Americano 420g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Krachitos Tradicionales 420g.jpeg" alt="Krachitos Tradicionales 420g" class="product-img"><div class="product-body"><div class="product-title">Krachitos Tradicionales 420g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Krachitos Tradicionales 420g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Krachitos Maní Pelado 500g.jpeg" alt="Krachitos Maní Pelado 500g" class="product-img"><div class="product-body"><div class="product-title">Krachitos Maní Pelado 500g</div><div class="product-meta"><span class="price">$8000</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Krachitos Maní Pelado 500g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Nikitos Chizitos 1k.jpeg" alt="Krachitos Conitos 900g" class="product-img"><div class="product-body"><div class="product-title">Krachitos Conitos 900g</div><div class="product-meta"><span class="price">$10000</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Krachitos Conitos 900g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Krachitos Bastonitos Ketchup 50g.jpeg" alt="Krachitos Bastonitos Ketchup 50g" class="product-img"><div class="product-body"><div class="product-title">Krachitos Bastonitos Ketchup 50g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Krachitos Bastonitos Ketchup 50g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Krachitos Bastonitos Queso 60g.jpeg" alt="Krachitos Bastonitos Queso 60g" class="product-img"><div class="product-body"><div class="product-title">Krachitos Bastonitos Queso 60g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Krachitos Bastonitos Queso 60g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Krachitos Papas Sin Sal 55g.jpeg" alt="Krachitos Papas Sin Sal 55g" class="product-img"><div class="product-body"><div class="product-title">Krachitos Papas Sin Sal 55g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Krachitos Papas Sin Sal 55g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+        <!-- NIKITOS -->
+        <div class="brand-section visible" id="brand-nikitos">
+          <div class="brand-section-title">Nikitos</div>
+          <div class="products">
+            <div class="product-card"><img src="salado/pizzetas nikito 1k.jpeg" alt="Nikitos Pizzetas 1k" class="product-img"><div class="product-body"><div class="product-title">Nikitos Pizzetas 1k</div><div class="product-meta"><span class="price">$6700</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Nikitos Pizzetas 1k',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Nikitos Bolitas Dulces 1k.jpeg" alt="Nikitos Bolitas Dulces 1k" class="product-img"><div class="product-body"><div class="product-title">Nikitos Bolitas Dulces 1k</div><div class="product-meta"><span class="price">$8500</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Nikitos Bolitas Dulces 1k',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Nikitos Papas Clásicas 450g.jpeg" alt="Nikitos Papas Clásicas 450g" class="product-img"><div class="product-body"><div class="product-title">Nikitos Papas Clásicas 450g</div><div class="product-meta"><span class="price">$7500</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Nikitos Papas Clásicas 450g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/pizzetas nikito 1k.jpeg" alt="Nikitos Chizitos 1k" class="product-img"><div class="product-body"><div class="product-title">Nikitos pizzetas 1k</div><div class="product-meta"><span class="price">$7000</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Nikitos Chizitos 1k',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+        <!-- PEHUAMAR -->
+        <div class="brand-section visible" id="brand-pehuamar">
+          <div class="brand-section-title">Pehuamar</div>
+          <div class="products">
+            <div class="product-card"><img src="salado/Pehuamar Papas Acanaladas 450g.jpeg" alt="Pehuamar Papas Acanaladas 450g" class="product-img"><div class="product-body"><div class="product-title">Pehuamar Papas Acanaladas 450g</div><div class="product-meta"><span class="price">$7600</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Pehuamar Papas Acanaladas 450g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Pehuamar Papas Clásicas 450g.jpeg" alt="Pehuamar Papas Clásicas 450g" class="product-img"><div class="product-body"><div class="product-title">Pehuamar Papas Clásicas 450g</div><div class="product-meta"><span class="price">$7600</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Pehuamar Papas Clásicas 450g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Pehuamar Chizitos 265g.jpeg" alt="Pehuamar Chizitos 265g" class="product-img"><div class="product-body"><div class="product-title">Pehuamar Chizitos 265g</div><div class="product-meta"><span class="price">$5000</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Pehuamar Chizitos 265g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+        <!-- SALADIX -->
+        <div class="brand-section visible" id="brand-saladix">
+          <div class="brand-section-title">Saladix</div>
+          <div class="products">
+            <div class="product-card"><img src="salado/Tira Saladix Jamón y Queso 33g.jpeg" alt="Tira Saladix Jamón y Queso 33g" class="product-img"><div class="product-body"><div class="product-title">Tira Saladix Jamón y Queso 33g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Tira Saladix Jamón y Queso 33g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Tira Saladix Pizza 40g.jpeg" alt="Tira Saladix Pizza 40g" class="product-img"><div class="product-body"><div class="product-title">Tira Saladix Pizza 40g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Tira Saladix Pizza 40g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Cajita Saladix Jamón 100g.jpeg" alt="Cajita Saladix Jamón 100g" class="product-img"><div class="product-body"><div class="product-title">Cajita Saladix Jamón 100g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cajita Saladix Jamón 100g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Cajita Saladix Jamón y Queso.jpeg" alt="Cajita Saladix Jamón y Queso 80g" class="product-img"><div class="product-body"><div class="product-title">Cajita Saladix Jamón y Queso 80g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cajita Saladix Jamón y Queso 80g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+        <!-- URQUIZA -->
+        <div class="brand-section visible" id="brand-urquiza">
+          <div class="brand-section-title">Urquiza</div>
+          <div class="products">
+            <div class="product-card"><img src="salado/Urquiza Galletas Saladas 100g.jpeg" alt="Urquiza Galletas Saladas 100g" class="product-img"><div class="product-body"><div class="product-title">Urquiza Galletas Saladas 100g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Urquiza Galletas Saladas 100g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Urquiza Galletas Clásicas 110g.jpeg" alt="Urquiza Galletas Clásicas 110g" class="product-img"><div class="product-body"><div class="product-title">Urquiza Galletas Clásicas 110g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Urquiza Galletas Clásicas 110g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Urquiza Galletas Picantes 100g.jpeg" alt="Urquiza Galletas Picantes 100g" class="product-img"><div class="product-body"><div class="product-title">Urquiza Galletas Picantes 100g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Urquiza Galletas Picantes 100g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+        <!-- OTROS -->
+        <div class="brand-section visible" id="brand-otros">
+          <div class="brand-section-title">Otros</div>
+          <div class="products">
+            <div class="product-card"><img src="salado/Rueditas Picantes 71g.jpeg" alt="Rueditas Picantes 71g" class="product-img"><div class="product-body"><div class="product-title">Rueditas Picantes 71g</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Rueditas Picantes 71g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+            <div class="product-card"><img src="salado/Club Social Original 144g - 6 unidades.jpeg" alt="Club Social Original 144g - 6 unidades" class="product-img"><div class="product-body"><div class="product-title">Club Social Original y jamon 144g - 6 unidades</div><div class="product-meta"><span class="price">$00</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Club Social Original 144g - 6 unidades',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+      </div><!-- /unitarios -->
 
       <!-- COMBOS -->
       <div class="subsection" id="combos-s">
@@ -588,25 +244,82 @@
           <span class="combo-badge">¡Mejor precio!</span>
         </div>
         <div class="products">
+
           <div class="product-card product-card--combo">
             <div class="combo-ribbon">COMBO</div>
-            <img src="images/placeholder.jpg" alt="Combo Salado 1" class="product-img">
+            <img src="salado/combo quento.jpeg" alt="Combo Quento" class="product-img">
             <div class="product-body">
-              <div class="product-title">Combo Salado 1</div>
-              <div class="product-meta"><span class="price">$000</span><span class="stock disponible">Disponible</span></div>
-              <div class="product-actions">
-                <div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div>
-                <button class="add-btn" onclick="addToCart('Combo Salado 1',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button>
-              </div>
+              <div class="product-title">Combo Quento 4x3</div>
+              <div class="product-meta"><span class="price">$6800</span><span class="stock disponible">Disponible</span></div>
+              <div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Combo Quento',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div>
             </div>
           </div>
+          <div class="product-card product-card--combo">
+            <div class="combo-ribbon">COMBO</div>
+            <img src="salado/Capullitos en Flor Tapitas Barbacoa 80g.jpeg" alt="Capullitos en Flor Tapitas Barbacoa 80g" class="product-img">
+            <div class="product-body">
+              <div class="product-title">Capullitos en Flor Tapitas Barbacoa 80g 5 unidades</div>
+              <div class="product-meta"><span class="price">$4000</span><span class="stock disponible">Disponible</span></div>
+              <div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Capullitos en Flor Tapitas Barbacoa 80g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div>
+            </div>
+          </div>
+
+          <div class="product-card product-card--combo">
+            <div class="combo-ribbon">COMBO</div>
+            <img src="salado/Capullitos en Flor Pizzitas 80g.jpeg" alt="Capullitos en Flor Pizzitas 80g" class="product-img">
+            <div class="product-body">
+              <div class="product-title">Capullitos en Flor Pizzitas 80g 5 unidades</div>
+              <div class="product-meta"><span class="price">$4000</span><span class="stock disponible">Disponible</span></div>
+              <div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Capullitos en Flor Pizzitas 80g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div>
+            </div>
+          </div>
+
+          <div class="product-card product-card--combo">
+            <div class="combo-ribbon">COMBO</div>
+            <img src="salado/Capullitos en Flor Chizitos 80g.jpeg" alt="Capullitos en Flor Chizitos 80g" class="product-img">
+            <div class="product-body">
+              <div class="product-title">Capullitos en Flor Chizitos 80g 5 unidades</div>
+              <div class="product-meta"><span class="price">$4000</span><span class="stock disponible">Disponible</span></div>
+              <div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Capullitos en Flor Chizitos 80g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div>
+            </div>
+          </div>
+
+          <div class="product-card product-card--combo">
+            <div class="combo-ribbon">COMBO</div>
+            <img src="salado/Capullitos en Flor Bolifrut 80g.jpeg" alt="Capullitos en Flor Bolifrut 80g" class="product-img">
+            <div class="product-body">
+              <div class="product-title">Capullitos en Flor Bolifrut 80g 5 unidades</div>
+              <div class="product-meta"><span class="price">$4000</span><span class="stock disponible">Disponible</span></div>
+              <div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Capullitos en Flor Bolifrut 80g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div>
+            </div>
+          </div>
+
+          <div class="product-card product-card--combo">
+            <div class="combo-ribbon">COMBO</div>
+            <img src="salado/Capullitos en Flor Cañitos 80g.jpeg" alt="Capullitos en Flor Cañitos 80g" class="product-img">
+            <div class="product-body">
+              <div class="product-title">Capullitos en Flor Cañitos 80g 5 unidades</div>
+              <div class="product-meta"><span class="price">$4000</span><span class="stock disponible">Disponible</span></div>
+              <div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Capullitos en Flor Cañitos 80g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div>
+            </div>
+          </div>
+
+          <div class="product-card product-card--combo">
+            <div class="combo-ribbon">COMBO</div>
+            <img src="salado/Capullitos en Flor Aritos de Cebolla 80g.jpeg" alt="Capullitos en Flor Aritos de Cebolla 80g" class="product-img">
+            <div class="product-body">
+              <div class="product-title">Capullitos en Flor Aritos de Cebolla 5 unidades</div>
+              <div class="product-meta"><span class="price">$4000</span><span class="stock disponible">Disponible</span></div>
+              <div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Capullitos en Flor Aritos de Cebolla 80g',this.previousElementSibling.querySelector('span').textContent,0)">Agregar</button></div>
+            </div>
+          </div>
+
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- FOOTER CONTACTO -->
   <footer class="footer" id="contacto">
     <div class="container footer__grid">
       <div>
@@ -626,17 +339,15 @@
       </div>
     </div>
     <div class="container footer__bottom">
-      <span>© <span id="year"></span> Golosinas Dymitri</span>
+      <span>© <span id="year"></span> Golosinas Dymitri - Todos los derechos reservados</span>
       <span class="muted">Sitio creado por Nexo Web - Salliquelo</span>
     </div>
   </footer>
 
-  <!-- BOTON WHATSAPP -->
   <a class="whatsapp-float" href="https://wa.me/5492392558607?text=Hola!%20Quiero%20hacer%20un%20pedido%20mi%20nombre%20es%20" target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <!-- DRAWER CARRITO -->
   <div class="drawer" id="cartDrawer">
     <div class="drawer__overlay" id="cartOverlay"></div>
     <div class="drawer__panel">
@@ -646,10 +357,7 @@
       </div>
       <div class="drawer__content" id="cartItems"></div>
       <div class="drawer__footer">
-        <div class="total-row">
-          <span>Total</span>
-          <strong id="cartTotal">$0</strong>
-        </div>
+        <div class="total-row"><span>Total</span><strong id="cartTotal">$0</strong></div>
         <button class="btn btn--primary w100" id="checkoutBtn">Enviar pedido por WhatsApp</button>
         <button class="btn btn--ghost w100" id="clearCartBtn">Vaciar carrito</button>
       </div>
@@ -664,6 +372,19 @@
       btn.classList.add('active');
       const el = document.getElementById(id);
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function filterBrand(btn, brand) {
+      document.querySelectorAll('.brand-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const sections = document.querySelectorAll('.brand-section');
+      sections.forEach(sec => {
+        brand === 'all' ? sec.classList.add('visible') : sec.classList.remove('visible');
+      });
+      if (brand !== 'all') {
+        const target = document.getElementById('brand-' + brand);
+        if (target) target.classList.add('visible');
+      }
     }
   </script>
 </body>
