@@ -10,9 +10,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+ 
 
+  <style id="lazy-img-styles">
+    /* Placeholder mientras carga */
+    .product-img {
+      background-color: rgba(255,255,255,0.06);
+      transition: opacity 0.35s ease;
+    }
+    .product-img.lazy-pending {
+      opacity: 0;
+    }
+    .product-img.lazy-loaded {
+      opacity: 1;
+    }
+  </style>
 </head>
 <body>
+  
   <!-- HEADER -->
   <header class="header">
     <div class="container header__inner">
@@ -52,8 +67,7 @@
   <section class="hero">
     <div class="container hero__grid">
       <div class="hero__content">
-                <h1>Pedí <span>lo que</span><span class="highlight"> quieras </span> y <span class="highlight">armá</span>  tu carrito 🛒</h1>
-
+        <h1>Pedí <span>lo que</span><span class="highlight"> quieras </span> y <span class="highlight">armá</span>  tu carrito 🛒</h1>
         <p>Seleccioná productos, combos y combos de cumpleaños. Luego mandás el pedido por WhatsApp con un solo botón.</p>
         <div class="hero__actions">
           <a class="btn btn--primary" href="salado.html" target="_blank">Ver Salados</a>
@@ -124,8 +138,7 @@
       </div>
     </div>
     <div class="container footer__bottom">
-            <span> © <span id="year"> 2026  </span> Golosinas Dymitri</span>
-
+      <span> © <span id="year"> 2026 - </span> Golosinas Dymitri -  Todos los derechos reservados</span>
       <span class="muted">Sitio creado por Nexo Web - Salliquelo</span>
     </div>
   </footer>
@@ -157,11 +170,48 @@
 
   <script src="script.js"></script>
   <script src="cart.js"></script>
+
+  <script id="lazy-img-script">
+    (function() {
+      // Intersection Observer para lazy load
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              const src = img.getAttribute('data-src');
+              if (src) {
+                img.src = src;
+                img.removeAttribute('data-src');
+                img.addEventListener('load', function() {
+                  img.classList.remove('lazy-pending');
+                  img.classList.add('lazy-loaded');
+                });
+                img.addEventListener('error', function() {
+                  img.classList.remove('lazy-pending');
+                  img.classList.add('lazy-loaded');
+                });
+              }
+              observer.unobserve(img);
+            }
+          });
+        }, {
+          rootMargin: '200px 0px', // Precarga 200px antes de que aparezca
+          threshold: 0
+        });
+
+        document.querySelectorAll('img.product-img[data-src]').forEach(function(img) {
+          observer.observe(img);
+        });
+      } else {
+        // Fallback para browsers sin IntersectionObserver
+        document.querySelectorAll('img.product-img[data-src]').forEach(function(img) {
+          img.src = img.getAttribute('data-src');
+          img.removeAttribute('data-src');
+          img.classList.add('lazy-loaded');
+        });
+      }
+    })();
+  </script>
 </body>
-
 </html>
-
-
-
-
-
