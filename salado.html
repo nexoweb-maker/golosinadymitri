@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salado - Golosinas Dymitri</title>
+  <meta name="description" content="Productos Salados - Golosinas Deli. Pedí por WhatsApp.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles-extra.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <style>
+    .brand-filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .brand-filter-btn {
+      padding: 7px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.70);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.82rem;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    .brand-filter-btn:hover {
+      background: rgba(255,255,255,0.10);
+      color: rgba(255,255,255,0.95);
+    }
+    .brand-filter-btn.active {
+      background: linear-gradient(135deg, rgba(255,61,119,0.30), rgba(255,183,3,0.25));
+      border-color: rgba(255,61,119,0.55);
+      color: #fff;
+    }
+    .brand-section { display: none; }
+    .brand-section.visible { display: block; }
+    .brand-section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.50);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      margin-top: 6px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+  </style>
+
+  <style id="lazy-img-styles">
+    /* Placeholder mientras carga */
+    .product-img {
+      background-color: rgba(255,255,255,0.06);
+      transition: opacity 0.35s ease;
+    }
+    .product-img.lazy-pending {
+      opacity: 0;
+    }
+    .product-img.lazy-loaded {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="index.html">
+        <img src="images/logo.jpeg" alt="Logo Golosinas Deli" class="brand__logo">
+        <div class="brand__text">
+          <strong>Golosinas Dymitri</strong>
+          <span>Variedad en productos de golosinas</span>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="salado.html" class="nav__link">Salado</a>
+        <a href="dulce.html" class="nav__link">Dulce</a>
+        <a href="condimentos.html" class="nav__link">Condimentos</a>
+        <a href="jugos.html" class="nav__link">Jugos</a>
+        <a href="masitas.html" class="nav__link">Masitas</a>
+        <a href="index.html#contacto" class="nav__link nav__link--btn">Contacto</a>
+        <button class="cart-btn" id="openCartBtn">🛒 <span class="cart-badge" id="cartCount">0</span></button>
+      </nav>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="salado.html">Salado</a>
+      <a href="dulce.html">Dulce</a>
+      <a href="condimentos.html">Condimentos</a>
+      <a href="jugos.html">Jugos</a>
+      <a href="masitas.html">Masitas</a>
+      <a href="index.html#contacto">Contacto</a>
+      <button id="openCartBtnMobile">🛒 Carrito (<span id="cartCountMobile">0</span>)</button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Productos Salados</h1>
+      <p>Seleccioná tus snacks favoritos y agregalos al carrito.</p>
+    </div>
+  </section>
+
+  <section class="section-nav">
+    <div class="container">
+      <div class="section-tabs">
+        <button class="section-tab active" onclick="scrollToTab(this,'unitarios-s')">🧂 Unitarios</button>
+        <button class="section-tab combo-tab" onclick="scrollToTab(this,'combos-s')">🎁 Combos</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <!-- UNITARIOS -->
+      <div class="subsection" id="unitarios-s">
+        <h3>Productos Unitarios</h3>
+
+        <div class="brand-filters">
+          <button class="brand-filter-btn active" onclick="filterBrand(this,'all')">Todas las marcas</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'goodshow')">Good Show</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'quento')">Quento</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'cops')">Cops</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'krachitos')">Krachitos</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'nikitos')">Nikitos</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'pehuamar')">Pehuamar</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'saladix')">Saladix</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'urquiza')">Urquiza</button>
+          <button class="brand-filter-btn" onclick="filterBrand(this,'otros')">Otros</button>
+        </div>
+
+        <!-- GOOD SHOW -->
+        <div class="brand-section visible" id="brand-goodshow">
+          <div class="brand-section-title">Good Show</div>
+          <div class="products">
+            <div class="product-card"><img loading="lazy" data-src="salado2/goog show papas fritas jamon serrano.webp" alt="Good Show Papas Fritas Jamón Serrano" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Good Show Papas Fritas Jamón Serrano 69g</div><div class="product-meta"><span class="price">$1.400</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Good Show Papas Fritas Jamón Serrano',this.previousElementSibling.querySelector('span').textContent,1400)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado2/Good Show Papas Fritas Crema y Cebolla.webp" alt="Good Show Papas Fritas Crema y Cebolla" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Good Show Papas Fritas Crema y Cebolla 63g</div><div class="product-meta"><span class="price">$1.400</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Good Show Papas Fritas Crema y Cebolla',this.previousElementSibling.querySelector('span').textContent,1400)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado2/Good Show Pimienta Negra y Sal Marina.webp" alt="Good Show Pimienta Negra y Sal Marina" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Good Show Pimienta Negra y Sal Marina 63g</div><div class="product-meta"><span class="price">$1.400</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Good Show Pimienta Negra y Sal Marina',this.previousElementSibling.querySelector('span').textContent,1400)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado2/Good Show Papas Fritas Cheddar.webp" alt="Good Show Papas Fritas Cheddar" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Good Show Papas Fritas Cheddar 63g</div><div class="product-meta"><span class="price">$1.400</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Good Show Papas Fritas Cheddar',this.previousElementSibling.querySelector('span').textContent,1400)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado2/Good Show Huevo Frito 63g.webp" alt="Good Show Huevo Frito 63g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Good Show Huevo Frito 63g</div><div class="product-meta"><span class="price">$1.400</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1900)">+</button></div><button class="add-btn" onclick="addToCart('Good Show Huevo Frito 63g',this.previousElementSibling.querySelector('span').textContent,1400)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado2/Good Show Papas Clásicas 430g.webp" alt="Good Show Papas Clásicas 430g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Good Show Papas Clásicas 430g</div><div class="product-meta"><span class="price">$7.200</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Good Show Papas Clásicas 430g',this.previousElementSibling.querySelector('span').textContent,7200)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado2/Good Show Corte Americano 430g.webp" alt="Good Show Corte Americano 430g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Good Show Corte Americano 430g</div><div class="product-meta"><span class="price">$7.200</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Good Show Corte Americano 430g',this.previousElementSibling.querySelector('span').textContent,7200)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+        <!-- QUENTO -->
+        <div class="brand-section visible" id="brand-quento">
+          <div class="brand-section-title">Quento</div>
+          <div class="products">
+            <div class="product-card"><img loading="lazy" data-src="salado/Quento Mega Queso 300g.webp" alt="Quento Mega Queso 300g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Quento Mega Queso 300g</div><div class="product-meta"><span class="price">$6.500</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Quento Mega Queso 300g',this.previousElementSibling.querySelector('span').textContent,6500)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado/Quento Papas Clásicas 475g.webp" alt="Quento Papas Clásicas 475g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Quento Papas Clásicas 475g</div><div class="product-meta"><span class="price">$8.000</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Quento Papas Clásicas 475g',this.previousElementSibling.querySelector('span').textContent,8000)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado/Quento Papas Onduladas 475g.webp" alt="Quento Papas Onduladas 475g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Quento Papas Onduladas 475g</div><div class="product-meta"><span class="price">$8.000</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Quento Papas Onduladas 475g',this.previousElementSibling.querySelector('span').textContent,8000)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+        <!-- COPS -->
+        <div class="brand-section visible" id="brand-cops">
+          <div class="brand-section-title">Cops</div>
+          <div class="products">
+            <div class="product-card"><img loading="lazy" data-src="salado1/Cops Palitos 1k.webp" alt="Cops Palitos 1k" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Cops Palitos 1k</div><div class="product-meta"><span class="price">$6.500</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Palitos 1k',this.previousElementSibling.querySelector('span').textContent,6500)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado1/Cops Papa Pay 500g.webp" alt="Cops Papa Pay 500g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Cops Papa Pay 500g</div><div class="product-meta"><span class="price">$6.000</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Papa Pay 500g',this.previousElementSibling.querySelector('span').textContent,6000)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado1/Cops Cascarones 200g.webp" alt="Cops Cascarones 200g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Cops Cascarones 200g</div><div class="product-meta"><span class="price">$4.500</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Cascarones 200g',this.previousElementSibling.querySelector('span').textContent,4500)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado1/Cops Conitos 300g.webp" alt="Cops Conitos 300g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Cops Conitos 300g</div><div class="product-meta"><span class="price">$4.500</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Conitos 300g',this.previousElementSibling.querySelector('span').textContent,4500)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado1/Cops Papas Fritas 800g.webp" alt="Cops Papas Fritas 800g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Cops Papas Fritas 800g</div><div class="product-meta"><span class="price">$10.500</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Papas Fritas 800g',this.previousElementSibling.querySelector('span').textContent,10500)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado1/Cops Bolitas Crocantes 800g.webp" alt="Cops Bolitas Crocantes 800g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Cops Bolitas Crocantes 800g</div><div class="product-meta"><span class="price">$5.000</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Bolitas Crocantes 800g',this.previousElementSibling.querySelector('span').textContent,5000)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado1/Cops Pancetitas 400g.webp" alt="Cops Pancetitas 400g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Cops Pancetitas 400g</div><div class="product-meta"><span class="price">$4.500</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Pancetitas 400g',this.previousElementSibling.querySelector('span').textContent,4500)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado1/Cops Aritos de Cebollas 400g.webp" alt="Cops Aritos de Cebollas 400g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Cops Aritos de Cebollas 400g</div><div class="product-meta"><span class="price">$8.000</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Aritos de Cebollas 400g',this.previousElementSibling.querySelector('span').textContent,8000)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado1/Cops Tutucas 1k.webp" alt="Cops Tutucas 1k" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Cops Tutucas 1k</div><div class="product-meta"><span class="price">$6.000</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Tutucas 1k',this.previousElementSibling.querySelector('span').textContent,6000)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado1/Cops Maní con Cáscara 2k.webp" alt="Cops Maní con Cáscara 2k" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Cops Maní con Cáscara 2k</div><div class="product-meta"><span class="price">$12.500</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Maní con Cáscara 2k',this.previousElementSibling.querySelector('span').textContent,12500)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado1/Cops Papas Fritas Ketchup 90g.webp" alt="Cops Papas Fritas Ketchup 90g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Cops Papas Fritas Ketchup 90g</div><div class="product-meta"><span class="price">$2.000</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Papas Fritas Ketchup 90g',this.previousElementSibling.querySelector('span').textContent,2000)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado1/Cops Papas Fritas Pizza Muzzarella 90g.webp" alt="Cops Papas Fritas Pizza Muzzarella 90g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Cops Papas Fritas Pizza Muzzarella 90g</div><div class="product-meta"><span class="price">$2.000</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Papas Fritas Pizza Muzzarella 90g',this.previousElementSibling.querySelector('span').textContent,2000)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado1/Cops Papas Fritas Jamón 90g.webp" alt="Cops Papas Fritas Jamón 90g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Cops Papas Fritas Jamón 90g</div><div class="product-meta"><span class="price">$2.000</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Papas Fritas Jamón 90g',this.previousElementSibling.querySelector('span').textContent,2000)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado1/Cops Papas Fritas Corte Americano 90g.webp" alt="Cops Papas Fritas Corte Americano 90g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Cops Papas Fritas Corte Americano 90g</div><div class="product-meta"><span class="price">$2.000</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Papas Fritas Corte Americano 90g',this.previousElementSibling.querySelector('span').textContent,2000)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado1/Cops Pizzetin 600g.webp" alt="Cops Pizzetin 600g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Cops Pizzetin 600g</div><div class="product-meta"><span class="price">$2.000</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cops Pizzetin 600g',this.previousElementSibling.querySelector('span').textContent,2000)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+        <!-- KRACHITOS -->
+        <div class="brand-section visible" id="brand-krachitos">
+          <div class="brand-section-title">Krachitos</div>
+          <div class="products">
+            <div class="product-card"><img loading="lazy" data-src="salado2/Krachitos Cheddar 330g.webp" alt="Krachitos Cheddar 330g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Krachitos Cheddar 330g</div><div class="product-meta"><span class="price">$6.800</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Krachitos Cheddar 330g',this.previousElementSibling.querySelector('span').textContent,6800)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado/Krachitos Jamón Serrano 330g.webp" alt="Krachitos Jamón Serrano 330g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Krachitos Jamón Serrano 330g</div><div class="product-meta"><span class="price">$6.800</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Krachitos Jamón Serrano 330g',this.previousElementSibling.querySelector('span').textContent,6800)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado/Krachitos Corte Americano 420g.webp" alt="Krachitos Corte Americano 420g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Krachitos Corte Americano 420g</div><div class="product-meta"><span class="price">$8.500</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Krachitos Corte Americano 420g',this.previousElementSibling.querySelector('span').textContent,8500)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado/Krachitos Tradicionales 420g.webp" alt="Krachitos Tradicionales 420g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Krachitos Tradicionales 420g</div><div class="product-meta"><span class="price">$8.500</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Krachitos Tradicionales 420g',this.previousElementSibling.querySelector('span').textContent,8500)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado/Krachitos Maní Pelado 500g.webp" alt="Krachitos Maní Pelado 500g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Krachitos Maní Pelado 500g</div><div class="product-meta"><span class="price">$8.000</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Krachitos Maní Pelado 500g',this.previousElementSibling.querySelector('span').textContent,8000)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado/Nikitos Chizitos 1k.webp" alt="Krachitos Conitos 900g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Krachitos Conitos 900g</div><div class="product-meta"><span class="price">$7.000</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Krachitos Conitos 900g',this.previousElementSibling.querySelector('span').textContent,10000)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado2/Krachitos Bastonitos Ketchup 50g.webp" alt="Krachitos Bastonitos Ketchup 50g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Krachitos Bastonitos Ketchup 50g</div><div class="product-meta"><span class="price">$1.500</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Krachitos Bastonitos Ketchup 50g',this.previousElementSibling.querySelector('span').textContent,1500)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado2/Krachitos Bastonitos Queso 60g.webp" alt="Krachitos Bastonitos Queso 60g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Krachitos Bastonitos Queso 60g</div><div class="product-meta"><span class="price">$1.500</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Krachitos Bastonitos Queso 60g',this.previousElementSibling.querySelector('span').textContent,1500)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado/Krachitos Papas Sin Sal 55g.webp" alt="Krachitos Papas Sin Sal 55g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Krachitos Papas Sin Sal 55g</div><div class="product-meta"><span class="price">$1.800</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Krachitos Papas Sin Sal 55g',this.previousElementSibling.querySelector('span').textContent,1800)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+        <!-- NIKITOS -->
+        <div class="brand-section visible" id="brand-nikitos">
+          <div class="brand-section-title">Nikitos</div>
+          <div class="products">
+            <div class="product-card"><img loading="lazy" data-src="salado/Nikitos Bolitas Dulces 1k.webp" alt="Nikitos Bolitas Dulces 1k" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Nikitos Bolitas Dulces 1k</div><div class="product-meta"><span class="price">$8.500</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Nikitos Bolitas Dulces 1k',this.previousElementSibling.querySelector('span').textContent,8500)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado/Nikitos Papas Clásicas 450g.webp" alt="Nikitos Papas Clásicas 450g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Nikitos Papas Clásicas 450g</div><div class="product-meta"><span class="price">$7.500</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Nikitos Papas Clásicas 450g',this.previousElementSibling.querySelector('span').textContent,7500)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado/pizzetas nikito 1k.webp" alt="Nikitos Chizitos 1k" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Nikitos pizzetas 1k</div><div class="product-meta"><span class="price">$7.000</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Nikitos Chizitos 1k',this.previousElementSibling.querySelector('span').textContent,7000)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+        <!-- PEHUAMAR -->
+        <div class="brand-section visible" id="brand-pehuamar">
+          <div class="brand-section-title">Pehuamar</div>
+          <div class="products">
+            <div class="product-card"><img loading="lazy" data-src="salado/Pehuamar Papas Acanaladas 450g.webp" alt="Pehuamar Papas Acanaladas 450g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Pehuamar Papas Acanaladas 450g</div><div class="product-meta"><span class="price">$7.600</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Pehuamar Papas Acanaladas 450g',this.previousElementSibling.querySelector('span').textContent,7600)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado/Pehuamar Papas Clásicas 450g.webp" alt="Pehuamar Papas Clásicas 450g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Pehuamar Papas Clásicas 450g</div><div class="product-meta"><span class="price">$7.600</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Pehuamar Papas Clásicas 450g',this.previousElementSibling.querySelector('span').textContent,7600)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado/Pehuamar Chizitos 265g.webp" alt="Pehuamar Chizitos 265g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Pehuamar Chizitos 265g</div><div class="product-meta"><span class="price">$5.000</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Pehuamar Chizitos 265g',this.previousElementSibling.querySelector('span').textContent,5000)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+        <!-- SALADIX -->
+        <div class="brand-section visible" id="brand-saladix">
+          <div class="brand-section-title">Saladix</div>
+          <div class="products">
+            <div class="product-card"><img loading="lazy" data-src="salado/Tira Saladix Jamón y Queso 33g.webp" alt="Tira Saladix Jamón y Queso 33g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Tira Saladix Jamón y Queso 33g</div><div class="product-meta"><span class="price">$900 c/u</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Tira Saladix Jamón y Queso 33g',this.previousElementSibling.querySelector('span').textContent,900)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado/Tira Saladix Pizza 40g.webp" alt="Tira Saladix Pizza 40g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Tira Saladix Pizza 40g</div><div class="product-meta"><span class="price">$900 c/u</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Tira Saladix Pizza 40g',this.previousElementSibling.querySelector('span').textContent,900)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado1/Cajita Saladix Jamón 100g.webp" alt="Cajita Saladix Jamón 100g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Cajita Saladix Jamón 100g</div><div class="product-meta"><span class="price">$1.700</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cajita Saladix Jamón 100g',this.previousElementSibling.querySelector('span').textContent,1700)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado1/Cajita Saladix Jamón y Queso.webp" alt="Cajita Saladix Jamón y Queso 80g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Cajita Saladix Jamón y Queso 80g</div><div class="product-meta"><span class="price">$1.700</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Cajita Saladix Jamón y Queso 80g',this.previousElementSibling.querySelector('span').textContent,1700)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+        <!-- URQUIZA -->
+        <div class="brand-section visible" id="brand-urquiza">
+          <div class="brand-section-title">Urquiza</div>
+          <div class="products">
+            <div class="product-card"><img loading="lazy" data-src="salado/Urquiza Galletas Saladas 100g.webp" alt="Urquiza Galletas Saladas 100g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Urquiza Galletas Saladas 100g</div><div class="product-meta"><span class="price">$14.000</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Urquiza Galletas Saladas 100g',this.previousElementSibling.querySelector('span').textContent,14000)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado/Urquiza Galletas Clásicas 110g.webp" alt="Urquiza Galletas Clásicas 110g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Urquiza Galletas Clásicas 110g</div><div class="product-meta"><span class="price">$14.000</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Urquiza Galletas Clásicas 110g',this.previousElementSibling.querySelector('span').textContent,14000)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado/Urquiza Galletas Picantes 100g.webp" alt="Urquiza Galletas Picantes 100g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Urquiza Galletas Picantes 100g</div><div class="product-meta"><span class="price">$14.000</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Urquiza Galletas Picantes 100g',this.previousElementSibling.querySelector('span').textContent,14000)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+        <!-- OTROS -->
+        <div class="brand-section visible" id="brand-otros">
+          <div class="brand-section-title">Otros</div>
+          <div class="products">
+            <div class="product-card"><img loading="lazy" data-src="salado/Rueditas Picantes 71g.webp" alt="Rueditas Picantes 71g" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Rueditas Picantes 71g</div><div class="product-meta"><span class="price">$1.700</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Rueditas Picantes 71g',this.previousElementSibling.querySelector('span').textContent,1700)">Agregar</button></div></div></div>
+            <div class="product-card"><img loading="lazy" data-src="salado1/Club Social Original 144g - 6 unidades.webp" alt="Club Social Original 144g - 6 unidades" class="product-img lazy-pending"><div class="product-body"><div class="product-title">Club Social Original y jamon 144g - 6 unidades</div><div class="product-meta"><span class="price">$2.900</span><span class="stock disponible">Disponible</span></div><div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Club Social Original 144g - 6 unidades',this.previousElementSibling.querySelector('span').textContent,2900)">Agregar</button></div></div></div>
+          </div>
+        </div>
+
+      </div><!-- /unitarios -->
+
+      <!-- COMBOS -->
+      <div class="subsection" id="combos-s">
+        <div class="subsection-combo-header">
+          <h3>🎁 Combos</h3>
+          <span class="combo-badge">¡Mejor precio!</span>
+        </div>
+        <div class="products">
+
+          <div class="product-card product-card--combo">
+            <div class="combo-ribbon">COMBO</div>
+            <img loading="lazy" data-src="salado1/combo quento.webp" alt="Combo Quento" class="product-img lazy-pending">
+            <div class="product-body">
+              <div class="product-title">Combo Quento 4x3</div>
+              <div class="product-meta"><span class="price">$6.800</span><span class="stock disponible">Disponible</span></div>
+              <div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Combo Quento',this.previousElementSibling.querySelector('span').textContent,6800)">Agregar</button></div>
+            </div>
+          </div>
+          <div class="product-card product-card--combo">
+            <div class="combo-ribbon">COMBO</div>
+            <img loading="lazy" data-src="salado1/combo capullito.webp" alt="Capullitos en Flor Tapitas Barbacoa 80g" class="product-img lazy-pending">
+            <div class="product-body">
+              <div class="product-title">Capullitos en Flor</div>
+               <div class="product-desc">Incluye: Tapitas Barbacoa, pizzitas, chizitos, bolifrut, cañitos y aros de cebolla 80g - 5 unidades surtidos</div>
+              <div class="product-meta"><span class="price">$4.000</span><span class="stock disponible">Disponible</span></div>
+              <div class="product-actions"><div class="qty"><button onclick="changeQty(this,-1)">-</button><span>0</span><button onclick="changeQty(this,1)">+</button></div><button class="add-btn" onclick="addToCart('Capullitos en Flor Tapitas Barbacoa 80g',this.previousElementSibling.querySelector('span').textContent,4000)">Agregar</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer" id="contacto">
+    <div class="container footer__grid">
+      <div>
+        <h3>Contacto</h3>
+        <p class="muted">Escribinos por WhatsApp o visitanos en el local.</p>
+        <div class="social">
+          <a class="social__btn" href="https://www.facebook.com/GolosinasDymitri" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+          <a class="social__btn" href="https://www.instagram.com/golosinas_dymitri/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+          <a class="social__btn" href="https://wa.me/5492392558607?text=Hola!%20Quiero%20hacer%20un%20pedido%20mi%20nombre%20es%20" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+      </div>
+      <div>
+        <h3>Ubicación</h3>
+        <div class="map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3197.1747649238573!2d-62.96238072543368!3d-36.74237597356822!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95c207711ebaa873%3A0x2b646c84f3b9ec2!2sAv.%20Am%C3%A9rica%20860%2C%20B6339%20Salliquel%C3%B3%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1770776971496!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <span>© <span id="year"></span> Golosinas Dymitri - Todos los derechos reservados</span>
+      <span class="muted">Sitio creado por Nexo Web - Salliquelo</span>
+    </div>
+  </footer>
+
+    <button id="scrollTopBtn" title="Volver arriba">↑</button>
+
+  <a class="whatsapp-float" href="https://wa.me/5492392558607?text=Hola!%20Quiero%20hacer%20un%20pedido%20mi%20nombre%20es%20" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <div class="drawer" id="cartDrawer">
+    <div class="drawer__overlay" id="cartOverlay"></div>
+    <div class="drawer__panel">
+      <div class="drawer__head">
+        <h3>Tu carrito</h3>
+        <button class="icon-btn" id="closeCartBtn">✕</button>
+      </div>
+      <div class="drawer__content" id="cartItems"></div>
+      <div class="drawer__footer">
+        <div class="total-row"><span>Total</span><strong id="cartTotal">$0</strong></div>
+        <button class="btn btn--primary w100" id="checkoutBtn">Enviar pedido por WhatsApp</button>
+        <button class="btn btn--ghost w100" id="clearCartBtn">Vaciar carrito</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="cart.js"></script>
+  <script>
+    function scrollToTab(btn, id) {
+      document.querySelectorAll('.section-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function filterBrand(btn, brand) {
+      document.querySelectorAll('.brand-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const sections = document.querySelectorAll('.brand-section');
+      sections.forEach(sec => {
+        brand === 'all' ? sec.classList.add('visible') : sec.classList.remove('visible');
+      });
+      if (brand !== 'all') {
+        const target = document.getElementById('brand-' + brand);
+        if (target) target.classList.add('visible');
+      }
+    }
+  </script>
+
+  <script id="lazy-img-script">
+    (function() {
+      // Intersection Observer para lazy load
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              const src = img.getAttribute('data-src');
+              if (src) {
+                img.src = src;
+                img.removeAttribute('data-src');
+                img.addEventListener('load', function() {
+                  img.classList.remove('lazy-pending');
+                  img.classList.add('lazy-loaded');
+                });
+                img.addEventListener('error', function() {
+                  img.classList.remove('lazy-pending');
+                  img.classList.add('lazy-loaded');
+                });
+              }
+              observer.unobserve(img);
+            }
+          });
+        }, {
+          rootMargin: '200px 0px', // Precarga 200px antes de que aparezca
+          threshold: 0
+        });
+
+        document.querySelectorAll('img.product-img[data-src]').forEach(function(img) {
+          observer.observe(img);
+        });
+      } else {
+        // Fallback para browsers sin IntersectionObserver
+        document.querySelectorAll('img.product-img[data-src]').forEach(function(img) {
+          img.src = img.getAttribute('data-src');
+          img.removeAttribute('data-src');
+          img.classList.add('lazy-loaded');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
